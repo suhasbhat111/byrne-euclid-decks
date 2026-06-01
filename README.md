@@ -55,6 +55,13 @@ make pptx         # build all PPTX decks + combined deck
 the top (TeX Live 2026 binary dir, Ghostscript, the EB Garamond font directory).
 Adjust them for your system if they differ.
 
+## Author
+
+Created by **Suhas Bhat** ([@suhasbhat111](https://github.com/suhasbhat111)), 2026.
+
+Developed with **Claude Code** (v2.1.145, Anthropic), using Claude Opus 4.8 and
+Claude Sonnet 4.6.
+
 ## Credits
 
 - **Oliver Byrne** — *The First Six Books of the Elements of Euclid* (London,
