@@ -1,0 +1,13 @@
+Authors of Byrne's Euclid — Book I Decks
+========================================
+
+Suhas Bhat  (@suhasbhat111)  — https://github.com/suhasbhat111
+
+Developed with Claude Code (v2.1.145, Anthropic),
+using Claude Opus 4.8 and Claude Sonnet 4.6.
+
+Based on the public-domain original:
+  Oliver Byrne, "The First Six Books of the Elements of Euclid" (London, 1847).
+
+Typographic / figure reference (not redistributed here):
+  the `byrne` LaTeX package and the jemmybutton vector recreation of Byrne's Euclid.
