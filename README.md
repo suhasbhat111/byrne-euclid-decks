@@ -62,13 +62,20 @@ Created by **Suhas Bhat** ([@suhasbhat111](https://github.com/suhasbhat111)), 20
 Developed with **Claude Code** (v2.1.145, Anthropic), using Claude Opus 4.8 and
 Claude Sonnet 4.6.
 
-## Credits
+## Credits & acknowledgements
 
 - **Oliver Byrne** — *The First Six Books of the Elements of Euclid* (London,
   1847), the public-domain original this recreation is based on.
-- The [`byrne`](https://ctan.org/pkg/byrne) LaTeX/MetaPost package and the
-  **jemmybutton** vector recreation of Byrne's Euclid, used as the typographic
-  and figure reference throughout. (No upstream files are redistributed here.)
+- **Sergey Slyusarev** (a.k.a. *jemmybutton*) — author of the
+  [`byrne`](https://ctan.org/pkg/byrne) LaTeX + MetaPost package
+  ([github.com/jemmybutton/byrne-latex](https://github.com/jemmybutton/byrne-latex))
+  and of the full LaTeX recreation of Byrne's Euclid
+  ([github.com/jemmybutton/byrne-euclid](https://github.com/jemmybutton/byrne-euclid)).
+  **This project depends entirely on his `byrne` package** to draw every coloured
+  figure and inline symbol, and used his recreation as the typographic and figure
+  reference throughout. His work is licensed **GPL-3.0**; it is *not* redistributed
+  here — install the package from CTAN/TeX Live. Enormous thanks to him: these
+  decks would not exist without his package. 🙏
 
 ## License
 

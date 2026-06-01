@@ -9,5 +9,8 @@ using Claude Opus 4.8 and Claude Sonnet 4.6.
 Based on the public-domain original:
   Oliver Byrne, "The First Six Books of the Elements of Euclid" (London, 1847).
 
-Typographic / figure reference (not redistributed here):
-  the `byrne` LaTeX package and the jemmybutton vector recreation of Byrne's Euclid.
+Built on (not redistributed here; install from CTAN/TeX Live):
+  the `byrne` LaTeX + MetaPost package by Sergey Slyusarev (jemmybutton),
+  GPL-3.0 — https://github.com/jemmybutton/byrne-latex
+  and his full recreation of Byrne's Euclid — https://github.com/jemmybutton/byrne-euclid
+  This project depends on his package to draw every figure and inline symbol.
