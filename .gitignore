@@ -1,0 +1,29 @@
+# LaTeX build junk
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Per-generator intermediate PDFs (canonical copies live in build/)
+generators/*.pdf
+
+# Regenerable symbol render cache (591+ PNGs; rebuilt by packager.py)
+build/pic_cache/
+
+# Stale combined PDF (superseded by build/book_I_complete.pdf)
+build/basic_principles_book_I.pdf
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# NOTE: build/*.pdf and build/*.pptx (the deliverables) ARE committed.
+
+# Stray generator preview images
+generators/*.png

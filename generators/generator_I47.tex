@@ -1,0 +1,77 @@
+% generator_I47.tex -- Prop I.47 (Theor.): Pythagorean theorem.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/2]{%
+  pair A,B,C,D,E,F,G,H,I,J,K,L,M,d[];%
+  A:=(0,0);B:=A shifted (-7/10u,-8/7u);%
+  C=whatever[A,A shifted ((A-B) rotated 90)]=whatever[B,B shifted dir(0)];%
+  d1:=(B-A) rotated -90;D:=A shifted d1;E:=B shifted d1;%
+  d2:=(A-C) rotated -90;F:=C shifted d2;G:=A shifted d2;%
+  d3:=(C-B) rotated -90;H:=B shifted d3;I:=C shifted d3;%
+  J=whatever[A,A shifted dir(90)]; J=whatever[B,C];%
+  K=whatever[A,A shifted dir(90)]; K=whatever[H,I];%
+  L=whatever[B,F]; L=whatever[A,C];%
+  M=whatever[A,I]; M=whatever[B,C];%
+  draw byPolygon(A,B,E,D)(byblack);%
+  draw byPolygon(L,A,G,F)(byred);%
+  draw byPolygon(C,L,F)(byred);%
+  draw byPolygon(J,M,I,K)(byblue);%
+  draw byPolygon(M,C,I)(byblue);%
+  draw byPolygon(B,J,K,H)(byyellow);%
+  byAngleDefine(F,C,A,byyellow,SOLID_SECTOR);%
+  byAngleDefine(B,C,I,byyellow,SOLID_SECTOR);%
+  byAngleDefine(A,C,B,byblack,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLineFull(A,K,byblack,1,0)(I,I,1,1,-1);%
+  draw byLineFull(B,F,byblack,0,0)(G,G,1,1,-1);%
+  draw byLineFull(A,I,byblack,0,0)(K,K,1,1,1);%
+  byLineDefine(C,F,byblue,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,I,byred,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(CF,CI);%
+  byLineDefine(A,B,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(1)(AB,BC,CA);%
+  byLineDefine.CAb(C,A,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineStylize(M,M,1,0,-1)(CAb);%
+  byLineDefine.AMb(A,M,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineStylize(C,C,0,1,-1)(AMb);%
+  byLineDefine.BCb(B,C,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineStylize(L,L,0,1,-1)(BCb);%
+  byLineDefine.BLb(L,B,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineStylize(C,C,1,0,-1)(BLb);%
+  draw byLabelsOnPolygon(B,E,D,A,G,F,C,I,K,H)(ALL_LABELS,-1);%
+  draw byLabelsOnPolygon(A,J,C)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,1);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XLVII. Theor.}
+\medskip\noindent\itshape
+In a right angled triangle \drawLine[bottom]{CA,BC,AB} the
+square on the hypotenuse \drawUnitLine{BC} is equal to the sum
+of the squares of the sides (\drawUnitLine{CA} and
+\drawUnitLine{AB}).
+\noindent\upshape\footnotesize\begin{center}
+On \drawUnitLine{BC}, \drawUnitLine{CA}, \drawUnitLine{AB}
+describe squares~(pr.~I.46)\\
+Draw $\drawUnitLine{AK}\parallel\drawUnitLine{CI}$~(pr.~I.31);
+also draw \drawUnitLine{BF} and \drawUnitLine{AI}.\\
+$\drawAngle{BCI}=\drawAngle{FCA}$.\\
+To each add $\drawAngle{ACB}$:
+$\therefore \drawAngle{BCI,ACB}=\drawAngle{FCA,ACB}$,\\
+$\drawUnitLine{BC}=\drawUnitLine{CI}$ and $\drawUnitLine{CA}=\drawUnitLine{CF}$;\\
+$\therefore \drawPolygon{MCI}=\drawPolygon{CLF}$~(pr.~I.4).\\
+Again $\because \drawUnitLine{AB}\parallel\drawUnitLine{CF}$\\
+$\drawPolygon{LAGF,CLF}=\mbox{ twice }\drawPolygon{CLF}$~(pr.~I.41),\\
+and $\drawPolygon{JMIK,MCI}=\mbox{ twice }\drawPolygon{MCI}$~(pr.~I.41);\\
+$\therefore \drawPolygon{LAGF,CLF}=\drawPolygon{JMIK,MCI}$.\\
+In the same manner it may be shown that\\
+$\drawPolygon{ABED}=\drawPolygon{BJKH}$;\\
+hence $\drawPolygon{ABED,LAGF,CLF}=\drawPolygon{JMIK,MCI,BJKH}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

@@ -1,0 +1,40 @@
+% generator_I41.tex -- Prop I.41 (Theor.): parallelogram = twice triangle on same base between same parallels.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,d;%
+  A:=(0,0);d:=(2u,0);B:=A shifted d;C:=B shifted (2u,0);%
+  D:=A shifted (4/3u,-5/2u);E:=D shifted d;%
+  F=whatever[B,E]=whatever[D,C];%
+  G=whatever[A,E]=whatever[D,C];%
+  draw byPolygon(A,B,F,G)(byyellow);%
+  draw byPolygon(G,F,E)(byyellow);%
+  draw byPolygon(A,G,D)(byblue);%
+  draw byPolygon(D,E,G)(byblue);%
+  draw byPolygon(C,F,E)(byred);%
+  draw byLine(A,E,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLineFull(A,C,byblack,1,0)(D,E,1,1,0);%
+  draw byLineFull(D,E,byblack,0,0)(A,C,1,1,0);%
+  draw byLabelsOnPolygon(E,D,A,B,C)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XLI. Theor.}
+\medskip\noindent\itshape
+If a parallelogram \drawPolygon[bottom]{ABFG,GFE,AGD,DEG} and a
+triangle \drawPolygon[bottom]{GFE,DEG,CFE} are upon the same
+base \drawUnitLine{DE} and between the same parallels
+\drawUnitLine{AC} and \drawUnitLine{DE}, the parallelogram is
+double the triangle.
+\bigskip\noindent\upshape\begin{center}
+Draw \drawUnitLine{AE} the diagonal.\\[4pt]
+Then $\drawPolygon{AGD,DEG}=\drawPolygon{GFE,DEG,CFE}$~(pr.~I.37)\\
+$\drawPolygon{ABFG,GFE,AGD,DEG}=\mbox{ twice }\drawPolygon{AGD,DEG}$~(pr.~I.34)\\[4pt]
+$\therefore \drawPolygon{ABFG,GFE,AGD,DEG}=\mbox{ twice }\drawPolygon{GFE,DEG,CFE}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

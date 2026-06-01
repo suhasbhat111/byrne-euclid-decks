@@ -1,0 +1,111 @@
+% basic_principles_axioms.tex -- Book I. Axioms (12 axioms, jemmybutton-matched).
+% Text from jemmybutton byrne-en-latex.tex (CC-BY-SA).
+% Build: lualatex basic_principles_axioms.tex  ->  basic_principles_axioms.pdf
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+% Helper: axiom block without figure (full-width centered)
+\newcommand{\axiomtext}[2]{%
+  \vspace{0.4cm}%
+  \begin{center}%
+    \textbf{#1.}\\[5pt]%
+    #2%
+  \end{center}%
+}
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Book~I.}}\\[4pt]
+  {\Large\textbf{Axioms}}
+\end{center}
+
+\vspace{0.4cm}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.2cm}
+
+\axiomtext{I}{Magnitudes which are equal to the same are equal to each other.}
+
+\axiomtext{II}{If equals be added to equals the sums will be equal.}
+
+\axiomtext{III}{If equals be taken away from equals the remainders will be equal.}
+
+\axiomtext{IV}{If equals be added to unequals the sums will be unequal.}
+
+\axiomtext{V}{If equals be taken away from unequals the remainders will be unequal.}
+
+\axiomtext{VI}{The doubles of the same or equal magnitudes are equal.}
+
+\axiomtext{VII}{The halves of the same or equal magnitudes are equal.}
+
+\axiomtext{VIII}{The magnitudes which coincide with one another, or exactly fill the same space, are equal.}
+
+\axiomtext{IX}{The whole is greater than its part.}
+
+\axiomtext{X}{Two straight lines cannot include a space.}
+
+\axiomtext{XI}{All right angles are equal.}
+
+% --- Axiom XII: parallel postulate (has figure) ---
+\defineNewPicture{%
+  pair A, B, C, D, E, F, G, H;%
+  numeric s;%
+  s := 3/2u;%
+  A := (0, 0);%
+  B := (4/3s, 0);%
+  C := (0, s);%
+  D := (4/3s, s);%
+  E := (1/3s, 8/6s);%
+  F := (xpart(E), -2/6s);%
+  G = whatever[A, B] = whatever[E, F];%
+  H = whatever[C, D] = whatever[E, F];%
+  byAngleDefine(B, G, E, byred,    SOLID_SECTOR);%
+  byAngleDefine(D, H, F, byyellow, SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(A, B, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byLine(C, D, byred,   SOLID_LINE, REGULAR_WIDTH);%
+  draw byLine(E, F, byblack, SOLID_LINE, REGULAR_WIDTH);%
+  draw byLabelLine(0)(AB, CD, EF);%
+  draw byLabelsOnPolygon(E, H, D)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL, 0);%
+  draw byLabelsOnPolygon(B, G, F)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL, 0);%
+}
+
+\vspace{0.5cm}
+\noindent
+\begin{minipage}[t]{0.34\linewidth}
+  \vspace{0pt}\centering
+  \drawCurrentPicture
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\linewidth}
+  \vspace{0pt}\centering
+  \textbf{XII.}\\[5pt]
+  If two straight lines
+  (\drawUnitLine{AB} and \drawUnitLine{CD})
+  meet a third straight line (\drawUnitLine{EF})
+  so as to make the two interior angles
+  (\drawAngle{H} and \drawAngle{G})
+  on the same side less than two straight angles,
+  these two straight lines will meet if produced
+  on that side on which the angles are less than
+  two right angles.\\[8pt]
+  \raggedright
+  The twelfth axiom may be expressed in any of the
+  following ways:
+  \begin{enumerate}[leftmargin=*, topsep=2pt, itemsep=2pt]
+    \item Two diverging straight lines cannot be both
+          parallel to the same straight line.
+    \item If a straight line intersect one of the two
+          parallel straight lines it must also intersect
+          the other.
+    \item Only one straight line can be drawn through a
+          given point, parallel to a given straight line.
+  \end{enumerate}
+\end{minipage}
+
+\end{document}

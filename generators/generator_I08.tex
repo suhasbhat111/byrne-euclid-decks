@@ -1,0 +1,89 @@
+% generator_I08.tex -- Prop I.8 (Theor.): SSS congruence -- equal sides => equal angle.
+% Geometry and text from jemmybutton (CC-BY-SA). Build: lualatex generator_I08.tex
+\documentclass[12pt]{article}
+\usepackage{geometry}\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+\begin{document}
+
+\defineNewPicture[1/5]{%
+  pair A, B, C, D, E, F, d;%
+  A := (0, 0);%
+  B := A shifted (-u, -4u);%
+  C := A shifted (3/2u, -3u);%
+  d := (0, -9/2u);%
+  D := A shifted d;%
+  E := B shifted d;%
+  F := C shifted d;%
+  byAngleDefine(F, D, E, byblack, SOLID_SECTOR);%
+  byAngleDefine(C, A, B, byblack, SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(A, B, byred,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, C, byblack, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, A, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(D, E, byred,   SOLID_LINE, THIN_WIDTH);%
+  byLineDefine(E, F, byblack, SOLID_LINE, THIN_WIDTH);%
+  byLineDefine(F, D, byblue,  SOLID_LINE, THIN_WIDTH);%
+  draw byNamedLineSeq(0)(CA,BC,AB);%
+  draw byNamedLineSeq(0)(FD,EF,DE);%
+  draw byLabelsOnPolygon(C, B, A)(ALL_LABELS, 0);%
+  draw byLabelsOnPolygon(F, E, D)(ALL_LABELS, 0);%
+}
+
+% STATEMENT
+\noindent
+\begin{minipage}[t]{0.45\linewidth}
+\centering\vspace{0pt}%
+\drawCurrentPicture
+\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}
+\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ VIII. Theor.}
+
+\medskip\noindent\itshape
+If two triangles have two sides of the one respectively
+equal to two sides of the other
+($\drawUnitLine{CA} = \drawUnitLine{FD}$ and
+$\drawUnitLine{AB} = \drawUnitLine{DE}$)
+and also their bases ($\drawUnitLine{BC} = \drawUnitLine{EF}$),
+equal; then the angles
+(\drawFromCurrentPicture{%
+  startAutoLabeling;%
+  startGlobalRotation(-getAttribute("angle","Direction","A"));%
+  draw byNamedAngleWithDummySides(A);%
+  stopGlobalRotation;%
+  stopAutoLabeling;%
+} and
+\drawFromCurrentPicture{%
+  startAutoLabeling;%
+  startGlobalRotation(-getAttribute("angle","Direction","D"));%
+  draw byNamedAngleWithDummySides(D);%
+  stopGlobalRotation;%
+  stopAutoLabeling;%
+}) contained by their equal sides are also equal.
+
+\bigskip
+
+% PROOF
+\noindent\upshape
+If the equal bases \drawUnitLine{BC} and \drawUnitLine{EF}
+be conceived to be placed one upon the other, so that the
+triangles shall lie at the same side of them, and that the
+equal sides \drawUnitLine{AB} and \drawUnitLine{DE},
+\drawUnitLine{CA} and \drawUnitLine{FD} be conterminous,
+the vertex of the one must fall on the vertex of the other;
+for to suppose them not coincident would contradict the last
+proposition.
+
+\smallskip
+Therefore sides \drawUnitLine{AB} and \drawUnitLine{CA},
+being coincident with \drawUnitLine{DE} and \drawUnitLine{FD},
+$\therefore \drawAngle{A} = \drawAngle{D}$.
+
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+
+\end{document}

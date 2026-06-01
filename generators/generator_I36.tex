@@ -1,0 +1,46 @@
+% generator_I36.tex -- Prop I.36 (Theor.): parallelograms on equal bases between same parallels are equal.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,H,I,J,d[];numeric h;%
+  h:=3u;d1:=(3/2u,0);d2:=(2/3u,-h);d3:=(-8/3u,-h);d4:=(-1/2u,-h);%
+  A:=(0,0);B:=A shifted d1;C:=A shifted d2;D:=C shifted d1;%
+  E:=C shifted -d3;F:=D shifted -d3;G:=E shifted d4;H:=F shifted d4;%
+  I:=(B--D) intersectionpoint (C--E);%
+  J:=(E--G) intersectionpoint (D--F);%
+  draw byPolygon(A,B,I,C)(byred);%
+  draw byPolygon(C,D,I)(byred);%
+  draw byPolygon(I,D,J,E)(byblue);%
+  draw byPolygon(E,F,J)(byyellow);%
+  draw byPolygon(J,F,H,G)(byyellow);%
+  byLineDefine(C,E,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(D,F,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(E,F,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(CE,EF,DF,CD);%
+  draw byLineFull(G,H,byblue,0,0)(E,F,1,1,0);%
+  draw byLabelsOnPolygon(A,B,D,C)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(E,F,H,G)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXXVI. Theor.}
+\medskip\noindent\itshape
+Parallelograms (\drawPolygon[bottom]{ABIC,CDI} and
+\drawPolygon[bottom]{EFJ,JFHG}) on equal bases, and between
+the same parallels, are equal.
+\bigskip\noindent\upshape\begin{center}
+Draw \drawUnitLine{CE} and \drawUnitLine{DF}\\
+$\drawUnitLine{CD}=\drawUnitLine{GH}=\drawUnitLine{EF}$~(pr.~I.34,~hyp.);\\[4pt]
+$\therefore \drawUnitLine{CD}=\mbox{ and }\parallel\drawUnitLine{EF}$;\\[4pt]
+$\therefore \drawUnitLine{CE}=\mbox{ and }\parallel\drawUnitLine{DF}$~(pr.~I.33)\\[4pt]
+and therefore \drawPolygon{CDI,IDJE,EFJ} is a parallelogram;\\[4pt]
+but $\drawPolygon{ABIC,CDI}=\drawPolygon{CDI,IDJE,EFJ}=\drawPolygon{EFJ,JFHG}$~(pr.~I.35)\\[4pt]
+$\therefore \drawPolygon{ABIC,CDI}=\drawPolygon{EFJ,JFHG}$~(ax.~I).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

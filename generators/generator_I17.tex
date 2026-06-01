@@ -1,0 +1,38 @@
+% generator_I17.tex -- Prop I.17 (Theor.): any two angles of triangle < 2 right angles.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture{%
+  pair A,B,C,D;%
+  A:=(0,0);B:=A shifted (2u,5/2u);C:=A shifted (5/2u,0);D:=C shifted (3/4u,0);%
+  byAngleDefine(B,A,C,byblue,SOLID_SECTOR);%
+  byAngleDefine(A,B,C,byblack,SOLID_SECTOR);%
+  byAngleDefine(A,C,B,byred,SOLID_SECTOR);%
+  byAngleDefine(B,C,D,byyellow,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(A,B,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,C,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(noLine,BC,AB,AC,CD);%
+  draw byLabelsOnPolygon(D,C,A,B)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XVII. Theor.}
+\medskip\noindent\itshape
+Any two angles of a triangle \drawLine[bottom]{AB,BC,AC} are together less
+than two right angles.
+\bigskip\noindent\upshape\begin{center}
+Produce \drawUnitLine{AC}, then will\\
+$\drawAngle{ACB}+\drawAngle{BCD}=\drawTwoRightAngles$.\\[6pt]
+But $\drawAngle{BCD}>\drawAngle{A}$~(pr.~I.16)\\[4pt]
+$\therefore \drawAngle{ACB}+\drawAngle{A}<\drawTwoRightAngles$,
+\end{center}
+\noindent and in the same manner it may be shown that any other two angles of
+the triangle taken together are less than two right angles.
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

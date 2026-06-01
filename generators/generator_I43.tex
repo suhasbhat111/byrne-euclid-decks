@@ -1,0 +1,41 @@
+% generator_I43.tex -- Prop I.43 (Theor.): complements of parallelograms about diagonal are equal.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/2]{%
+  pair A,B,C,D,E,F,G,H,I,d[];path q[];%
+  d1:=(5/2u,0);d2:=(-u,-3u);%
+  A:=(0,0);B:=A shifted d1;C:=A shifted d2;D:=C shifted d1;%
+  E:=2/5[A,D];%
+  q1:=(E shifted d1)--(E shifted -d1);%
+  q2:=(E shifted d2)--(E shifted -d2);%
+  F:=q1 intersectionpoint (A--C);%
+  G:=q1 intersectionpoint (B--D);%
+  H:=q2 intersectionpoint (A--B);%
+  I:=q2 intersectionpoint (C--D);%
+  draw byPolygon(A,E,H)(byyellow);%
+  draw byPolygon(A,E,F)(byyellow);%
+  draw byPolygon(H,B,G,E)(byblue);%
+  draw byPolygon(F,C,I,E)(byblack);%
+  draw byPolygon(I,D,E)(byred);%
+  draw byPolygon(G,D,E)(byred);%
+  draw byLabelsOnPolygon(C,F,A,H,B,G,D,I)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(F,E,H)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XLIII. Theor.}
+\medskip\noindent\itshape
+The complements \drawPolygon[bottom]{HBGE} and
+\drawPolygon[bottom]{FCIE} of the parallelograms which are
+about the diagonal of a parallelogram are equal.
+\bigskip\noindent\upshape\begin{center}
+$\drawPolygon{AEF,FCIE,IDE}=\drawPolygon{AEH,HBGE,GDE}$~(pr.~I.34)\\[4pt]
+and $\drawPolygon{AEF,IDE}=\drawPolygon{AEH,GDE}$~(pr.~I.34)\\[4pt]
+$\therefore \drawPolygon{FCIE}=\drawPolygon{HBGE}$~(ax.~III).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

@@ -1,0 +1,51 @@
+% generator_I12.tex -- Prop I.12 (Prob.): perpendicular from external point to line.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture{%
+  pair A,B,C,D,E,F;path c;numeric r,a[];%
+  A:=(0,2u);B:=(-7/4u,0);C:=B xscaled -1;D:=1/2[B,C];%
+  E:=4/3[D,B];F:=4/3[D,C];r:=abs(A-B);c:=fullcircle scaled 2r shifted A;%
+  a1:=xpart(c intersectiontimes (F--1/2[B,C]));%
+  a2:=xpart(c intersectiontimes (E--1/2[B,C]));%
+  byAngleDefine(A,D,B,byyellow,SOLID_SECTOR);%
+  byAngleDefine(C,D,A,byblue,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(A,D,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,CA);%
+  draw byArc.O(A,B,C)(r,byred,0,0,0,0);%
+  draw byArcBE.Ol(A,a2-1/4,a2,r,byred,1,0,0,0);%
+  draw byArcBE.Or(A,a1,a1+1/4,r,byred,1,0,0,0);%
+  byLineDefine(D,B,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,E,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(F,C,byyellow,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(1)(BE,DB,CD,FC);%
+  draw byLabelsOnPolygon(B,A,C)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelLineEnd(B,A,0);draw byLabelLineEnd(D,A,0);draw byLabelLineEnd(C,A,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XII. Prob.}
+\medskip\noindent\itshape
+To draw a straight line perpendicular to a given indefinite straight line
+(\drawUnitLine[1.2cm]{DB,CD}) from a given point (\drawPointL{A}) without.
+\bigskip\noindent\upshape
+With the given point \drawPointL{A} as centre, at one side of the line,
+and any distance \drawUnitLine{DB} capable of extending to the other side,
+describe \drawArc{O}.\\[4pt]
+Make $\drawUnitLine{DB}=\drawUnitLine{CD}$~(pr.~I.10),\\
+draw \drawUnitLine{AB}, \drawUnitLine{CA} and \drawUnitLine{AD},\\
+then $\drawUnitLine{AD}\perp\drawUnitLine{DB,CD}$.\\[6pt]
+For~(pr.~I.8) since $\drawUnitLine{DB}=\drawUnitLine{CD}$~(const.),\\
+\drawUnitLine{AD} common to both,\\
+and $\drawUnitLine{AB}=\drawUnitLine{CA}$~(def.~15),\\[4pt]
+$\therefore \drawAngle{ADB}=\drawAngle{CDA}$, and\\[4pt]
+$\therefore \drawUnitLine{AD}\perp\drawUnitLine{DB,CD}$~(def.~10).
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

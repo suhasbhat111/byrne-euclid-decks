@@ -1,0 +1,38 @@
+% generator_I31.tex -- Prop I.31 (Prob.): draw line through point parallel to given line.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/6]{%
+  pair A,B,C,D,E,F,d;%
+  A:=(0,0);B:=A shifted (7/2u,0);d:=(0,-3u);%
+  C:=A shifted d;D:=B shifted d;E:=4/5[A,B];F:=1/5[C,D];%
+  byAngleDefine(F,E,A,byyellow,SOLID_SECTOR);%
+  byAngleDefine(E,F,D,byred,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(E,F,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,E,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(E,B,byred,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,F,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(F,D,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AE,EB);%
+  draw byNamedLineSeq(0)(CF,FD);%
+  draw byLabelsOnPolygon(A,E,B,noPoint,D,F,C,noPoint)(ALL_LABELS,0);%
+}
+\begin{center}\textbf{Book~I.\enspace Prop.\ XXXI. Prob.}\end{center}
+\vspace{0.3cm}\noindent
+\begin{minipage}[t]{0.50\linewidth}\itshape
+From a given point (\drawPointL[middle][EB]{E}) to draw a
+straight line parallel to a given straight line
+(\drawUnitLine{CF,FD}).
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\drawCurrentPicture\end{minipage}
+\vspace{0.5cm}
+\begin{center}
+Draw \drawUnitLine{EF} from the point \drawPointL[middle][EB]{E}
+to any point \drawPointL[middle][CF]{F} in \drawUnitLine{CF,FD},\\[4pt]
+make $\drawAngle{E}=\drawAngle{F}$~(pr.~I.23),\\[4pt]
+then $\drawUnitLine{AE,EB}\parallel\drawUnitLine{CF,FD}$~(pr.~I.27).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{document}

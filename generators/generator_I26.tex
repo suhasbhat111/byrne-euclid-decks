@@ -1,0 +1,109 @@
+% generator_I26.tex -- Prop I.26 (Theor.): AAS congruence, two cases.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+% --- Case I figure ---
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,d;%
+  A:=(0,0);B:=A shifted (3u,0);C:=A shifted (5/2u,3u);%
+  d:=(0,-4u);D:=A shifted d;E:=B shifted d;F:=C shifted d;G:=3/4[D,F];%
+  byAngleDefine(B,A,C,byyellow,SOLID_SECTOR);%
+  byAngleDefine(C,B,A,byred,SOLID_SECTOR);%
+  byAngleDefine(A,C,B,byblack,ARC_SECTOR);%
+  draw byNamedAngleResized(BAC,CBA,ACB);%
+  byLineDefine(A,B,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(CA,AB,BC);%
+  byAngleDefine(E,D,F,byyellow,SOLID_SECTOR);%
+  byAngleDefine(G,E,D,byblack,SOLID_SECTOR);%
+  byAngleDefine(F,E,G,byblue,SOLID_SECTOR);%
+  byAngleDefine(D,F,E,byblack,ARC_SECTOR);%
+  draw byNamedAngleResized(EDF,GED,FEG,DFE);%
+  draw byLine(E,G,byyellow,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(D,E,byblue,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(E,F,byblack,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(F,G,byred,DASHED_LINE,THIN_WIDTH);%
+  byLineDefine(G,D,byred,SOLID_LINE,THIN_WIDTH);%
+  draw byNamedLineSeq(0)(GD,FG,EF,DE);%
+  draw byLabelsOnPolygon(C,B,A)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(D,G,F,E)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXVI. Theor.}
+\medskip\noindent\itshape
+If two triangles have two angles of the one respectively equal
+to two angles of the other ($\drawAngle{A}=\drawAngle{D}$ and
+$\drawAngle{B}=\drawAngle{GED,FEG}$), and a side of the one
+equal to a side of the other similarly placed with respect to
+the equal angles, the remaining sides and angles are
+respectively equal to one another.
+\medskip\noindent\upshape\textit{Case~I.}\\
+Let \drawUnitLine{AB} and \drawUnitLine{DE} which lie between
+the equal angles be equal, then $\drawUnitLine{CA}=\drawUnitLine{GD,FG}$.\\[4pt]
+For if it be possible, let one of them \drawUnitLine{GD,FG} be greater;
+make $\drawUnitLine{CA}=\drawUnitLine{GD}$, draw \drawUnitLine{EG}.\\[4pt]
+In \drawLine[bottom]{CA,BC,AB} and \drawLine[bottom]{GD,EG,DE} we have\\
+$\drawUnitLine{CA}=\drawUnitLine{GD}$, $\drawAngle{A}=\drawAngle{D}$,
+$\drawUnitLine{AB}=\drawUnitLine{DE}$;\\
+$\therefore \drawAngle{B}=\drawAngle{GED}$~(pr.~I.4)\\
+but $\drawAngle{B}=\drawAngle{GED,FEG}$~(hyp.)\\
+and therefore $\drawAngle{GED}=\drawAngle{GED,FEG}$, which is absurd;\\
+hence neither of the sides \drawUnitLine{CA} and \drawUnitLine{GD,FG}
+is greater than the other;\\
+and $\therefore$ they are equal;\\[4pt]
+$\therefore \drawUnitLine{BC}=\drawUnitLine{EF}$, and
+$\drawAngle{C}=\drawAngle{F}$~(pr.~I.4).
+\end{minipage}
+\newpage
+% --- Case II figure ---
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,d;%
+  d:=(0,-4u);%
+  A:=(0,0);B:=A shifted (3u,0);C:=A shifted (1/2u,3u);%
+  D:=A shifted d;E:=B shifted d;F:=C shifted d;G:=3/4[D,E];%
+  byAngleDefine(B,A,C,byyellow,SOLID_SECTOR);%
+  byAngleDefine(C,B,A,byred,SOLID_SECTOR);%
+  draw byNamedAngleResized(BAC,CBA);%
+  byLineDefine(A,B,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(CA,AB,BC);%
+  byAngleDefine(F,D,E,byyellow,SOLID_SECTOR);%
+  byAngleDefine(F,G,D,byblack,SOLID_SECTOR);%
+  byAngleDefine(F,E,D,byred,SOLID_SECTOR);%
+  draw byNamedAngleResized(FDE,FGD,FED);%
+  draw byLine(F,G,byyellow,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(D,G,byblue,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(G,E,byblue,DASHED_LINE,THIN_WIDTH);%
+  byLineDefine(E,F,byblack,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(F,D,byred,SOLID_LINE,THIN_WIDTH);%
+  draw byNamedLineSeq(0)(FD,EF,GE,DG);%
+  draw byLabelsOnPolygon(C,B,A)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(D,F,E,G)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXVI. Theor.~(cont.)}
+\medskip\noindent\upshape\textit{Case~II.}\\
+Again, let $\drawUnitLine{CA}=\drawUnitLine{FD}$, which lie
+opposite the equal angles $\drawAngle{B}$ and $\drawAngle{E}$.\\[4pt]
+If it be possible, let $\drawUnitLine{DG,GE}>\drawUnitLine{AB}$,
+then take $\drawUnitLine{DG}=\drawUnitLine{AB}$, draw \drawUnitLine{FG}.\\[4pt]
+Then in \drawLine[bottom]{CA,BC,AB} and \drawLine[bottom]{FD,FG,DG}
+we have $\drawUnitLine{CA}=\drawUnitLine{FD}$,
+$\drawUnitLine{AB}=\drawUnitLine{DG}$ and $\drawAngle{A}=\drawAngle{D}$,\\[4pt]
+$\therefore \drawAngle{B}=\drawAngle{G}$~(pr.~I.4)\\
+but $\drawAngle{B}=\drawAngle{E}$~(hyp.)\\[4pt]
+$\therefore \drawAngle{G}=\drawAngle{E}$ which is absurd~(pr.~I.16).\\[4pt]
+Consequently, neither of the sides \drawUnitLine{AB} or
+\drawUnitLine{DG,GE} is greater than the other, hence they must
+be equal. It follows~(pr.~I.4) that the triangles are equal in
+all respects.
+\end{minipage}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{document}

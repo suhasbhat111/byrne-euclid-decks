@@ -1,0 +1,68 @@
+% generator_I24.tex -- Prop I.24 (Theor.): two triangles with two equal sides; greater included angle => greater base.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  byAngleMacroName[3]:="byAngleMArcs";%
+  vardef byAngleMArcs(expr angleArc,angleColor)(suffix angleOptionalColors)=%
+    save p;path p;%
+    p:=angleArc scaled((angleSize*angleScale)-lineWidthThin);%
+    image(for i:=1 step -1/floor((angleSize*angleScale)/2mm) until (2mm/(angleSize*angleScale)):%
+      draw (p scaled i) withpen pencircle scaled lineWidthThin withcolor angleColor;%
+    endfor;)%
+  enddef;%
+  pair A,B,C,D,E,F,G,d;%
+  A:=(0,0);B:=A shifted (u,-5/2u);C:=A shifted (-u,-7/2u);%
+  D:=((fullcircle scaled 2abs(C-A)) shifted A) intersectionpoint (B--B shifted (-2abs(C-A),0));%
+  d:=(0,-4u);E:=A shifted d;F:=B shifted d;G:=C shifted d;%
+  byAngleDefine(B,A,C,byblack,DASHED_ARC_SECTOR);%
+  byAngleDefine(C,A,D,byblack,3);%
+  byAngleDefine(F,E,G,byblack,DASHED_ARC_SECTOR);%
+  byAngleDefine(B,D,A,byblue,SOLID_SECTOR);%
+  byAngleDefine(C,D,B,byred,SOLID_SECTOR);%
+  byAngleDefine(D,C,A,byyellow,SOLID_SECTOR);%
+  byAngleDefine(A,C,B,byblack,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(A,B,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  draw byLine(C,A,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(B,D,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,D,byred,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byblue,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,AD,CD,BC);%
+  byLineDefine(E,F,byblue,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(F,G,byyellow,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(G,E,byred,SOLID_LINE,THIN_WIDTH);%
+  draw byNamedLineSeq(0)(EF,FG,GE);%
+  draw byLabelsOnPolygon(D,A,B,C)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(G,E,F)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXIV. Theor.}
+\medskip\noindent\itshape
+If two triangles have two sides of the one respectively equal
+to two sides of the other (\drawUnitLine{AB} to \drawUnitLine{EF}
+and \drawUnitLine{AD} to \drawUnitLine{GE}), and if one of the
+angles (\drawAngle{BAC,CAD}) contained by the equal sides be
+greater than the other (\drawAngle{FEG}), the side
+(\drawUnitLine{DB}) which is opposite to the greater angle is
+greater than the side (\drawUnitLine{FG}) which is opposite to
+the less angle.
+\bigskip\noindent\upshape\begin{center}
+Make $\drawAngle{BAC}=\drawAngle{FEG}$~(pr.~I.23),\\
+and $\drawUnitLine{CA}=\drawUnitLine{GE}$~(pr.~I.3),\\
+draw \drawUnitLine{CD} and \drawUnitLine{BC}.\\[6pt]
+$\because \drawUnitLine{CA}=\drawUnitLine{AD}$~(ax.~I,~hyp.,~const.)\\
+$\therefore \drawAngle{BDA,CDB}=\drawAngle{DCA}$~(pr.~I.5)\\
+but $\drawAngle{CDB}<\drawAngle{DCA}$,\\
+and $\therefore \drawAngle{CDB}<\drawAngle{DCA,ACB}$,\\[4pt]
+$\therefore \drawUnitLine{DB}>\drawUnitLine{BC}$~(pr.~I.19)\\[4pt]
+but $\drawUnitLine{BC}=\drawUnitLine{FG}$~(pr.~I.4)\\[4pt]
+$\therefore \drawUnitLine{DB}>\drawUnitLine{FG}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

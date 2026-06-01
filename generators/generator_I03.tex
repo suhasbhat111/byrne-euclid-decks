@@ -1,0 +1,78 @@
+% generator_I03.tex -- Prop I.3 (Prob): from the greater of two lines, cut off a part equal to the less.
+% Figure and proof geometry from jemmybutton byrne-en-latex.tex (CC-BY-SA), wording from 1847 original.
+% Build: lualatex generator_I03.tex  ->  generator_I03.pdf
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+\begin{document}
+
+% FIGURE: greater line ABC (AB solid, BC dashed), lesser line EF (blue), circle A through D (blue).
+\defineNewPicture{%
+    pair A, B, C, D, E, F;%
+    path P;%
+    numeric r;%
+    A := (0, 0);%
+    r := 7/4u;%
+    B := A shifted (r, 0);%
+    C := A shifted (4/3r, 0);%
+    D := A shifted dir(30)*r;%
+    E := A shifted (7/6r, -1/6r);%
+    F := A shifted (7/6r, -7/6r);%
+    % Layer-1 assertions: AB = EF = r (the construction goal), B on circle A
+    if abs(abs(A-B) - r) > 0.01: errmessage "ASSERT: AB != r"; fi;%
+    if abs(abs(A-D) - r) > 0.01: errmessage "ASSERT: AD != r"; fi;%
+    byLineDefine(A, B, byblack, SOLID_LINE,  REGULAR_WIDTH);%
+    byLineDefine(B, C, byblack, DASHED_LINE, REGULAR_WIDTH);%
+    byLineDefine(A, D, byred,   SOLID_LINE,  REGULAR_WIDTH);%
+    draw byNamedLineSeq(0)(BC,AB,AD);%
+    draw byLine(E, F, byblue, SOLID_LINE, REGULAR_WIDTH);%
+    draw byCircle.A(A, D, byblue, 0, 0, 0);%
+    draw byLabelsOnPolygon(B, A, D)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL, 1);%
+    draw byLabelLineEnd(D, A, 0);%
+    draw byLabelLineEnd(C, A, 0);%
+    draw byLabelPoint(B, angle(B-A) + 45, 2);%
+    draw byLabelsOnPolygon(E, F)(ALL_LABELS, 0);%
+}
+
+% STATEMENT
+\begin{center}
+\textbf{Book~I.\enspace Prop.\ III. Prob.}
+\end{center}
+
+\vspace{0.3cm}
+\noindent
+\begin{minipage}[t]{0.50\linewidth}
+\itshape From the greater (\drawUnitLine{AB,BC}) of two given straight
+lines, to cut off a part equal to the less (\drawUnitLine{EF}).
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.46\linewidth}
+\centering
+\drawCurrentPicture
+\end{minipage}
+
+\vspace{0.5cm}
+
+% PROOF
+\begin{center}
+Draw $\drawUnitLine{AD} = \drawUnitLine{EF}$~(pr.~I.2);\\[3pt]
+describe \offsetPicture{10pt}{0pt}{\drawFromCurrentPicture{%
+    draw byNamedLine(AD);%
+    draw byNamedCircle(A);%
+    draw byLabelLineEnd(D, A, 0);%
+    draw byLabelLineEnd(A, D, 0);%
+}}~(post.~III),\\[3pt]
+then $\drawUnitLine{EF} = \drawUnitLine{AB}$.\\[8pt]
+For $\drawUnitLine{AD} = \drawUnitLine{AB}$~(def.~15),\\
+and $\drawUnitLine{EF} = \drawUnitLine{AD}$~(const.);\\[3pt]
+$\therefore \drawUnitLine{EF} = \drawUnitLine{AB}$~(ax.~I).
+\end{center}
+
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+
+\end{document}

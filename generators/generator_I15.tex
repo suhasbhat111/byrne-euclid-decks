@@ -1,0 +1,38 @@
+% generator_I15.tex -- Prop I.15 (Theor.): vertical angles are equal.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture{%
+  pair A,B,C,D,E;%
+  A:=(7/4u,3/2u);B:=A scaled -1;C:=A xscaled -1;D:=C scaled -1;%
+  E:=(A--B) intersectionpoint (C--D);%
+  byAngleDefine(B,E,C,byyellow,SOLID_SECTOR);%
+  byAngleDefine(C,E,A,byred,SOLID_SECTOR);%
+  byAngleDefine(A,E,D,byblack,SOLID_SECTOR);%
+  byAngleDefine(D,E,B,byblue,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(A,B,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(C,D,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLabelsOnPolygon(C,E,A,noPoint)(ALL_LABELS,0);%
+  draw byLabelPoint(B,lineAngle.AB+90,1);%
+  draw byLabelPoint(D,lineAngle.CD-90,1);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XV. Theor.}
+\medskip\noindent\itshape
+If two right lines (\drawUnitLine{AB} and \drawUnitLine{CD}) intersect one
+another, the vertical angles \drawAngle{BEC} and \drawAngle{AED},
+\drawAngle{CEA} and \drawAngle{DEB} are equal.
+\bigskip\noindent\upshape\begin{center}
+$\drawAngle{BEC}+\drawAngle{CEA}=\drawTwoRightAngles$\\[4pt]
+$\drawAngle{AED}+\drawAngle{CEA}=\drawTwoRightAngles$\\[4pt]
+$\therefore \drawAngle{BEC}=\drawAngle{AED}$.\\[6pt]
+In the same manner it may be shown that\\
+$\drawAngle{CEA}=\drawAngle{DEB}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

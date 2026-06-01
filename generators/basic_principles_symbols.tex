@@ -1,0 +1,154 @@
+% basic_principles_symbols.tex -- Book I. Symbols and Abbreviations (jemmybutton-matched).
+% Text from jemmybutton byrne-en-latex.tex (CC-BY-SA).
+% Build: lualatex basic_principles_symbols.tex  ->  basic_principles_symbols.pdf
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+% Symbol row: left=symbol (22%), right=description (74%)
+\newcommand{\symrow}[2]{%
+  \vspace{0.25cm}%
+  \noindent%
+  \begin{minipage}[t]{0.22\linewidth}%
+    \vspace{0pt}\centering\Large #1%
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{0.74\linewidth}%
+    \vspace{4pt}#2%
+  \end{minipage}%
+}
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Book~I.}}\\[4pt]
+  {\Large\textbf{Symbols and Abbreviations}}
+\end{center}
+
+\vspace{0.4cm}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.2cm}
+
+\symrow{$\therefore$}{expresses the word \emph{therefore}.}
+
+\symrow{$\because$}{expresses the word \emph{because}.}
+
+\symrow{$=$}{expresses the word \emph{equal}. This sign of equality may be
+  read \emph{equal to}, or \emph{is equal to}, or \emph{are equal to}; but
+  the discrepancy in regard to the introduction of the auxiliary verbs
+  \emph{is}, \emph{are}, \&c.\ cannot affect the geometrical rigour.}
+
+\symrow{$\neq$}{means the same as if the words \emph{`not equal'} were written.}
+
+\symrow{$>$}{signifies \emph{greater than}.}
+
+\symrow{$<$}{signifies \emph{less than}.}
+
+\symrow{$\ngtr$}{signifies \emph{not greater than}.}
+
+\symrow{$\nless$}{signifies \emph{not less than}.}
+
+\symrow{$+$}{is read \emph{plus} (\emph{more}), the sign of addition; when
+  interposed between two or more magnitudes, signifies their sum.}
+
+\symrow{$-$}{is read \emph{minus} (\emph{less}), signifies subtraction; and
+  when placed between two quantities denotes that the latter is taken from
+  the former.}
+
+\symrow{$\times$}{expresses the product of two or more numbers when placed
+  between them in arithmetic and algebra; but in geometry it is generally
+  used to express a \emph{rectangle}, when placed between ``two straight
+  lines which contain one of its right angles.'' A \emph{rectangle} may also
+  be represented by placing a point between two of its conterminous sides.}
+
+\symrow{$: :: :$}{expresses an \emph{analogy} or \emph{proportion}; thus if
+  A, B, C and D represent four magnitudes, and A has to B the same ratio
+  that C has to D, the proportion is written
+  $A : B :: C : D$,\ \ $A : B = C : D$,\ \ or\ \ $\dfrac{A}{B} = \dfrac{C}{D}$.\\[4pt]
+  This equality is read: \emph{as A is to B, so is C to D}.}
+
+\symrow{$\parallel$}{signifies \emph{parallel to}.}
+
+\symrow{$\perp$}{signifies \emph{perpendicular to}.}
+
+% --- Angle and right-angle symbols (need a figure) ---
+\defineNewPicture{%
+  pair A, B, C, D;%
+  numeric s;%
+  s := 3/2u;%
+  A := (0, 0);%
+  B := dir(0)*s;%
+  C := dir(50)*s;%
+  D := dir(90)*s;%
+  byAngleDefine(B, A, C, byblack, ARC_SECTOR);%
+  byAngleDefine(B, A, D, byblack, ARC_SECTOR);%
+  byPointLabelRemove(A,B,C,D);%
+}
+
+\symrow{\drawAngle{BAC}}{signifies \emph{angle}.}
+
+\symrow{\drawAngle{BAD}}{signifies \emph{right angle}.}
+
+\symrow{\normalsize\drawTwoRightAngles}{signifies \emph{two right angles}.}
+
+% --- Point symbols (need a second figure) ---
+\defineNewPicture{%
+  pair A, B, C, D;%
+  A := (0, -1/4u);%
+  B := (u, 0);%
+  C := (-u, 0);%
+  D := (0, u);%
+  byLineDefine(A, D, byblack, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, D, byblack, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, D, byblack, SOLID_LINE, REGULAR_WIDTH);%
+  byPointLabelRemove(A,D);%
+}
+
+\symrow{%
+  \drawFromCurrentPicture{%
+    draw byNamedLine(AD);%
+    draw byNamedLineSeq(0)(BD,CD);%
+  }
+  \quad or \quad
+  \drawFromCurrentPicture{%
+    draw byNamedLineSeq(0)(AD,BD);%
+  }%
+}{briefly designates a \emph{point}.}
+
+\vspace{0.4cm}
+
+\noindent
+The square described on a line is concisely written thus,
+$\drawUnitLine{AD}^2$.
+In the same manner twice the square of, is expressed by
+$2 \cdot \drawUnitLine{AD}^2$.
+
+\vspace{0.5cm}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.3cm}
+
+\symrow{def.}{signifies \emph{definition}.}
+
+\symrow{post.}{signifies \emph{postulate}.}
+
+\symrow{ax.}{signifies \emph{axiom}.}
+
+\symrow{hyp.}{signifies \emph{hypothesis}. The \emph{hypothesis} is the
+  condition assumed or taken for granted. Thus, the hypothesis of the
+  proposition that a triangle is isosceles is that its legs are equal.}
+
+\symrow{const.}{signifies \emph{construction}. The \emph{construction} is
+  the change made in the original figure, by drawing lines, making angles,
+  describing circles, \&c., in order to adapt it to the argument of the
+  demonstration or the solution of the problem. The conditions under which
+  these changes are made are as indisputable as those contained in the
+  hypothesis.}
+
+\symrow{Q.~E.~D.}{signifies \emph{Quod erat demonstrandum} — which was to
+  be demonstrated.}
+
+\end{document}

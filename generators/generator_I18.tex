@@ -1,0 +1,43 @@
+% generator_I18.tex -- Prop I.18 (Theor.): greater side => greater opposite angle.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/4]{%
+  pair A,B,C,D;numeric a;%
+  A:=(0,0);B:=A shifted (5/2u,2u);C:=B shifted (-3/2u,2u);%
+  D:=C shifted (unitvector(A-C) scaled abs(B-C));%
+  a:=angle(B-D);%
+  forsuffixes i=A,B,C,D: i:=i rotated -a; endfor;%
+  byAngleDefine(C,D,B,byblue,SOLID_SECTOR);%
+  byAngleDefine(D,B,C,byblack,SOLID_SECTOR);%
+  byAngleDefine(A,B,D,byred,SOLID_SECTOR);%
+  byAngleDefine(B,A,D,byyellow,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(D,B,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(D,C,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,A,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,D,byred,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(DC,BC,BA,AD);%
+  draw byLabelsOnPolygon(D,C,B,A)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XVIII. Theor.}
+\medskip\noindent\itshape
+In any triangle \drawLine{DC,BC,BA,AD} if one side \drawUnitLine{AD,DC}
+be greater than another \drawUnitLine{BC}, the angle opposite to the
+greater side is greater than the angle opposite to the less.
+I.e.\ $\drawAngle{DBC,ABD}>\drawAngle{A}$.
+\bigskip\noindent\upshape\begin{center}
+Make $\drawUnitLine{DC}=\drawUnitLine{BC}$~(pr.~I.3), draw \drawUnitLine{DB}.\\[6pt]
+Then will $\drawAngle{D}=\drawAngle{DBC}$~(pr.~I.5);\\[4pt]
+but $\drawAngle{D}>\drawAngle{A}$~(pr.~I.16)\\[4pt]
+$\therefore \drawAngle{DBC}>\drawAngle{A}$ and much more\\
+is $\drawAngle{DBC,ABD}>\drawAngle{A}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

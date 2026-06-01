@@ -1,0 +1,45 @@
+% generator_I30.tex -- Prop I.30 (Theor.): lines parallel to the same line are parallel to each other.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,H,I,J,K,d;%
+  A:=(0,0);B:=A shifted (7/2u,0);d:=(0,-u);%
+  C:=A shifted d;D:=B shifted d;E:=C shifted d;F:=D shifted d;%
+  G:=13/20[A,B];H:=7/20[E,F];%
+  I:=(G--H) intersectionpoint (C--D);%
+  J:=3/2[H,G];K:=5/4[G,H];%
+  byAngleDefine(B,G,J,byyellow,SOLID_SECTOR);%
+  byAngleDefine(D,I,J,byblue,SOLID_SECTOR);%
+  byAngleDefine(F,H,J,byred,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(A,B,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(C,D,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(E,F,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(J,K,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLabelLine(0)(AB,CD,EF,JK);%
+  draw byLabelsOnPolygon(J,G,A)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(J,I,C)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(J,H,E)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXX. Theor.}
+\medskip\noindent\itshape
+Straight lines (\drawUnitLine{AB} and \drawUnitLine{EF}) which
+are parallel to the same straight line (\drawUnitLine{CD}), are
+parallel to one another.
+\bigskip\noindent\upshape\begin{center}
+Let \drawUnitLine{JK} intersect
+$\left\{\vcenter{\nointerlineskip\hbox{\drawUnitLine{AB}}%
+\nointerlineskip\hbox{\drawUnitLine{CD}}%
+\nointerlineskip\hbox{\drawUnitLine{EF}}}\right\}$;\\[6pt]
+Then, $\drawAngle{G}=\drawAngle{I}=\drawAngle{H}$~(pr.~I.29),\\[4pt]
+$\therefore \drawAngle{G}=\drawAngle{H}$\\[4pt]
+$\therefore \drawUnitLine{AB}\parallel\drawUnitLine{EF}$~(pr.~I.28).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

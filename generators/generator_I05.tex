@@ -1,0 +1,98 @@
+% generator_I05.tex -- Prop I.5 (Theor.): isosceles triangle -- base angles equal.
+% Geometry and text from jemmybutton (CC-BY-SA). Build: lualatex generator_I05.tex
+\documentclass[12pt]{article}
+\usepackage{geometry}\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+\begin{document}
+
+\defineNewPicture{%
+  pair A, B, C, D, E;%
+  A := (0, 0);%
+  B := A shifted (u, -2u);%
+  C := B xscaled -1;%
+  D := 9/5[A,B];%
+  E := 9/5[A,C];%
+  byAngleDefine(B, A, C, byblack, SOLID_SECTOR);%
+  byAngleDefine(A, B, C, byblue,   SOLID_SECTOR);%
+  byAngleDefine(B, C, A, byblue,   SOLID_SECTOR);%
+  byAngleDefine(C, B, E, byyellow, SOLID_SECTOR);%
+  byAngleDefine(D, C, B, byyellow, SOLID_SECTOR);%
+  byAngleDefine(B, D, C, byred,    SOLID_SECTOR);%
+  byAngleDefine(C, E, B, byred,    SOLID_SECTOR);%
+  byAngleDefine(E, B, D, byblack,  ARC_SECTOR);%
+  byAngleDefine(D, C, E, byblack,  ARC_SECTOR);%
+  draw byNamedAngleResized(BAC,ABC,BCA,CBE,DCB,BDC,CEB);%
+  byLineDefine(B, D, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, E, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, E, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, D, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, B, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, C, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, C, byblack,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(CD,noLine,BC,noLine,BE,CE,AC,AB,BD);%
+  draw byLabelsOnPolygon(E, C, A, B, D, C, B)(ALL_LABELS, 0);%
+}
+
+% STATEMENT
+\noindent
+\begin{minipage}[t]{0.45\linewidth}
+\centering\vspace{0pt}%
+\drawCurrentPicture
+\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}
+\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ V. Theor.}
+
+\medskip\noindent\itshape
+In any isosceles triangle \drawLine[bottom]{BC,AC,AB}
+if the equal sides be produced, the external angles at the
+base are equal, and the internal angles at the base are
+also equal.
+
+\bigskip
+
+% PROOF
+\noindent\upshape
+Produce \drawUnitLine{AB} and \drawUnitLine{AC}~(post.~II),\\
+take $\drawUnitLine{BD} = \drawUnitLine{CE}$~(pr.~I.3);\\
+draw \drawUnitLine{BE} and \drawUnitLine{CD}.
+
+\medskip
+Then in
+\offsetPicture{8pt}{0pt}{\drawFromCurrentPicture{%
+  startAutoLabeling;%
+  draw byNamedAngle(BAC);%
+  draw byNamedLineSeq(0)(BE,CE,AC,AB);%
+  stopAutoLabeling;%
+}} and
+\offsetPicture{8pt}{0pt}{\drawFromCurrentPicture{%
+  startAutoLabeling;%
+  draw byNamedAngle(BAC);%
+  draw byNamedLineSeq(0)(BD,CD,AC,AB);%
+  stopAutoLabeling;%
+}}\\
+we have $\drawUnitLine{AB,BD} = \drawUnitLine{AC,CE}$~(const.),\\
+\drawAngle{BAC} common to both,\\
+and $\drawUnitLine{AB} = \drawUnitLine{AC}$~(hyp.)\\
+$\therefore \drawAngle{BCA,DCB} = \drawAngle{ABC,CBE}$,
+$\drawUnitLine{BE} = \drawUnitLine{CD}$
+and $\drawAngle{CEB} = \drawAngle{BDC}$~(pr.~I.4).
+
+\medskip
+Again in \drawLine{BE,CE,BC} and \drawLine{BD,CD,BC}\\
+we have $\drawUnitLine{BD} = \drawUnitLine{CE}$,
+$\drawAngle{CEB} = \drawAngle{BDC}$
+and $\drawUnitLine{BE} = \drawUnitLine{CD}$,\\
+$\therefore \drawAngle{DCE,DCB} = \drawAngle{EBD,CBE}$
+and $\drawAngle{DCB} = \drawAngle{CBE}$~(pr.~I.4)\\
+but $\drawAngle{BCA,DCB} = \drawAngle{ABC,CBE}$,
+$\therefore \drawAngle{BCA} = \drawAngle{ABC}$~(ax.~III).
+
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+
+\end{document}

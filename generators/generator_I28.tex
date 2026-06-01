@@ -1,0 +1,52 @@
+% generator_I28.tex -- Prop I.28 (Theor.): external = internal opposite angle, or co-interior = 2 right angles => parallel.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,H,d;%
+  A:=(0,0);B:=A shifted (7/2u,0);d:=(0,-3/2u);%
+  C:=A shifted d;D:=B shifted d;E:=9/20[A,B];F:=11/20[C,D];%
+  G:=7/4[F,E];H:=4/3[E,F];%
+  byAngleDefine(G,E,A,byblack,SOLID_SECTOR);%
+  byAngleDefine(B,E,G,byyellow,SOLID_SECTOR);%
+  byAngleDefine(A,E,H,byred,SOLID_SECTOR);%
+  byAngleDefine(H,E,B,byblue,SOLID_SECTOR);%
+  byAngleDefine(C,F,G,byblue,SOLID_SECTOR);%
+  byAngleDefine(G,F,D,byred,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(A,B,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(C,D,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(G,H,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLabelLine(0)(AB,CD,GH);%
+  draw byLabelsOnPolygon(G,E,B)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(H,F,C)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXVIII. Theor.}
+\medskip\noindent\itshape
+If a straight line (\drawUnitLine{GH}), cutting two other
+straight lines (\drawUnitLine{AB} and \drawUnitLine{CD}), makes
+the external equal to the internal and opposite angle, at the
+same side of the cutting line (namely $\drawAngle{GEA}=\drawAngle{CFG}$
+or $\drawAngle{BEG}=\drawAngle{GFD}$), or if it makes the two
+internal angles at the same side (\drawAngle{GFD} and
+\drawAngle{HEB}, or \drawAngle{CFG} and \drawAngle{AEH})
+together equal to two right angles, those two straight lines
+are parallel.
+\bigskip\noindent\upshape\begin{center}
+First, if $\drawAngle{GEA}=\drawAngle{CFG}$,
+then $\drawAngle{GEA}=\drawAngle{HEB}$~(pr.~I.15),\\
+$\therefore \drawAngle{CFG}=\drawAngle{HEB}$
+$\therefore \drawUnitLine{AB}\parallel\drawUnitLine{CD}$~(pr.~I.27).\\[6pt]
+Secondly, if $\drawAngle{CFG}+\drawAngle{AEH}=\drawTwoRightAngles$,\\
+then $\drawAngle{AEH}+\drawAngle{HEB}=\drawTwoRightAngles$~(pr.~I.13),\\
+$\therefore \drawAngle{CFG}+\drawAngle{AEH}=\drawAngle{AEH}+\drawAngle{HEB}$~(ax.~III)\\[4pt]
+$\therefore \drawAngle{CFG}=\drawAngle{HEB}$\\[4pt]
+$\therefore \drawUnitLine{AB}\parallel\drawUnitLine{CD}$~(pr.~I.27).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

@@ -1,0 +1,47 @@
+% generator_I27.tex -- Prop I.27 (Theor.): alternate angles equal => lines parallel.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,H,I,d;%
+  A:=(0,0);B:=A shifted (8/3u,0);d:=(0,-7/4u);%
+  C:=A shifted d;D:=B shifted d;E:=1/3[A,B];F:=2/3[C,D];%
+  G:=3/2[F,E];H:=3/2[E,F];I:=1/2[A,C] shifted (-2u,0);%
+  byAngleDefine(A,E,H,byyellow,SOLID_SECTOR);%
+  byAngleDefine(H,E,B,byred,SOLID_SECTOR);%
+  byAngleDefine(C,F,G,byblue,SOLID_SECTOR);%
+  byAngleDefine(G,F,D,byyellow,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(I,A,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(I,C,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(CD,IC,IA,AB);%
+  draw byLine(G,H,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLabelLine(0)(AB,CD,GH);%
+  draw byLabelsOnPolygon(G,E,B)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(H,F,C)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXVII. Theor.}
+\medskip\noindent\itshape
+If a straight line (\drawUnitLine{GH}) meeting two other
+straight lines (\drawUnitLine{CD} and \drawUnitLine{AB}) makes
+with them the alternate angles (\drawAngle{CFG} and
+\drawAngle{HEB}; \drawAngle{GFD} and \drawAngle{AEH}) equal,
+these two straight lines are parallel.
+\bigskip\noindent\upshape
+If \drawUnitLine{CD} be not parallel to \drawUnitLine{AB} they
+shall meet when produced.\\[4pt]
+If it be possible, let those lines be not parallel, but meet
+when produced; then the external angle \drawAngle{HEB} is
+greater than \drawAngle{CFG}~(pr.~I.16), but they are also
+equal~(hyp.), which is absurd: in the same manner it may be
+shown that they cannot meet on the other side;
+$\therefore$ they are parallel.
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

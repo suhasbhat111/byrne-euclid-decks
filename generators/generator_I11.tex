@@ -1,0 +1,45 @@
+% generator_I11.tex -- Prop I.11 (Prob.): perpendicular from point on line.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture{%
+  pair A,B,C,D,E,F;%
+  A:=(0,5/2u);B:=(-ypart(A)/sqrt(3),0);C:=B xscaled -1;D:=1/2[B,C];%
+  E:=3/2[D,B];F:=3/2[D,C];%
+  byAngleDefine(A,D,B,byred,SOLID_SECTOR);%
+  byAngleDefine(C,D,A,byblue,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(A,D,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,CA);%
+  byLineDefine(D,B,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,E,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(F,C,byred,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(BE,DB,CD,FC);%
+  draw byLabelsOnPolygon(F,C,D,B,E)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(B,A,C)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+}
+\begin{center}\textbf{Book~I.\enspace Prop.\ XI. Prob.}\end{center}
+\vspace{0.3cm}\noindent
+\begin{minipage}[t]{0.50\linewidth}\itshape
+From a given point (\drawPointL[middle]{D}), in a given straight line
+(\drawUnitLine[3/2cm]{BD,DC}), to draw a perpendicular.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\drawCurrentPicture\end{minipage}
+\vspace{0.5cm}
+\begin{center}
+Take any point (\drawPointL[middle]{C}) in the given line,\\
+cut off $\drawUnitLine{DB}=\drawUnitLine{CD}$~(pr.~I.3),\\
+construct \drawLine[bottom]{AB,CA,CD,DB}~(pr.~I.1),\\
+draw \drawUnitLine{AD} and it shall be perpendicular to the given line.\\[6pt]
+For $\drawUnitLine{AB}=\drawUnitLine{CA}$~(const.)\\
+$\drawUnitLine{CD}=\drawUnitLine{DB}$~(const.)\\
+and \drawUnitLine{AD} common to the two triangles.\\[4pt]
+Therefore $\drawAngle{ADB}=\drawAngle{CDA}$~(pr.~I.8)\\[4pt]
+$\therefore \drawUnitLine{AD}\perp\drawUnitLine{DB,CD}$~(def.~10).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{document}

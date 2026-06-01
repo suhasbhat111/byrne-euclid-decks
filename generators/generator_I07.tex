@@ -1,0 +1,109 @@
+% generator_I07.tex -- Prop I.7 (Theor.): unique triangle on base -- equal conterminous sides.
+% Geometry and text from jemmybutton (CC-BY-SA). Build: lualatex generator_I07.tex
+\documentclass[12pt]{article}
+\usepackage{geometry}\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+\begin{document}
+
+\defineNewPicture{%
+  pair A, B, C, D, E, F, G, H;%
+  A := (0, 0);%
+  B := A shifted (4u, 0);%
+  C := A shifted (u, 3u);%
+  D := C shifted (7/4u, 0);%
+  E := 1/2[C, D] yscaled -0.7;%
+  F := E shifted (0, -2u);%
+  G := 5/4[A, E];%
+  H := 5/4[A, F];%
+  byAngleDefine.C(B, C, A, byblack, SOLID_SECTOR);%
+  byAngleDefine(D, C, B,  byred,    SOLID_SECTOR);%
+  byAngleDefine.D(A, D, B, byyellow, SOLID_SECTOR);%
+  byAngleDefine(C, D, A,  byblue,   SOLID_SECTOR);%
+  byAngleDefine(B, F, H,  byblack,  SOLID_SECTOR);%
+  byAngleDefine(B, F, E,  byred,    SOLID_SECTOR);%
+  byAngleDefine(B, E, G,  byyellow, SOLID_SECTOR);%
+  byAngleDefine(G, E, F,  byblue,   SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(C, D, byblack, DASHED_LINE, REGULAR_WIDTH);%
+  draw byLine(E, F, byblack, DASHED_LINE, REGULAR_WIDTH);%
+  draw byLine(A, B, byblack, SOLID_LINE,  REGULAR_WIDTH);%
+  byLineDefine(B, C, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, A, byred,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, D, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(D, A, byred,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, E, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(E, A, byred,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, F, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(F, A, byred,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(E, G, byred,   DASHED_LINE, REGULAR_WIDTH);%
+  byLineDefine(F, H, byred,   DASHED_LINE, REGULAR_WIDTH);%
+  draw byNamedLine(EG,FH);%
+  draw byNamedLineSeq(0)(BC,CA,EA,BE);%
+  draw byNamedLineSeq(0)(BD,DA,FA,BF);%
+  byPointLabelDefine(F, "C");%
+  byPointLabelDefine(E, "D");%
+  draw byLabelsOnPolygon(F, A, C, D, B, F, noPoint)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL, 0);%
+  draw byLabelsOnPolygon(A, E, B)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL, 0);%
+  draw byLabelsOnPolygon(H, F, A)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL, 0);%
+}
+
+% STATEMENT
+\noindent
+\begin{minipage}[t]{0.45\linewidth}
+\centering\vspace{0pt}%
+\drawCurrentPicture
+\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}
+\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ VII. Theor.}
+
+\medskip\noindent\itshape
+On the same base (\drawUnitLine{AB}), and on the same side
+of it there cannot be two triangles having their conterminous
+sides (\drawUnitLine{CA} and \drawUnitLine{DA},
+\drawUnitLine{BC} and \drawUnitLine{BD}) at both extremities
+of the base, equal to each other.
+
+\bigskip
+
+% PROOF
+\noindent\upshape
+When two triangles stand on the same base, and on the same
+side of it, the vertex of the one shall either fall outside
+of the other triangle, or within it; or, lastly, on one of
+its sides.
+
+\smallskip
+If it be possible let the two triangles be constructed so
+that
+$\left\{\begin{aligned}
+  \drawUnitLine{CA}&=\drawUnitLine{DA}\\
+  \drawUnitLine{BC}&=\drawUnitLine{BD}
+\end{aligned}\right\}$,
+then draw \drawUnitLine{CD} and,
+
+\begin{center}
+$\drawAngle{C,DCB} = \drawAngle{CDA}$~(pr.~I.5)
+
+$\therefore \drawAngle{DCB} < \drawAngle{CDA}$ and
+
+$\left.\begin{aligned}
+  \therefore\drawAngle{DCB} &< \drawAngle{CDA,D}\\
+  \text{but~(pr.~I.5)}\enspace\drawAngle{DCB}
+    &= \drawAngle{CDA,D}
+\end{aligned}\right\}\text{which is absurd,}$
+\end{center}
+
+\noindent
+therefore the two triangles cannot have their conterminous
+sides equal at both extremities of the base.
+
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+
+\end{document}

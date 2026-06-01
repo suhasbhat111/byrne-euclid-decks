@@ -1,0 +1,40 @@
+% generator_I19.tex -- Prop I.19 (Theor.): greater angle => greater opposite side.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/4]{%
+  pair A,B,C;%
+  A:=(0,0);B:=A shifted (7/2u,0);C:=A shifted (u,3u);%
+  byAngleDefine(C,A,B,byblue,SOLID_SECTOR);%
+  byAngleDefine(A,B,C,byred,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(A,B,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(CA,BC,AB);%
+  draw byLabelsOnPolygon(B,A,C)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XIX. Theor.}
+\medskip\noindent\itshape
+If in any triangle \drawLine[bottom]{CA,BC,AB} one angle \drawAngle{A}
+be greater than another \drawAngle{B} the side \drawUnitLine{BC} which is
+opposite to the greater angle, is greater than the side \drawUnitLine{CA}
+opposite the less.
+\bigskip\noindent\upshape\begin{center}
+If \drawUnitLine{BC} be not greater than \drawUnitLine{CA} then must\\
+$\drawUnitLine{BC}=$ or $<\drawUnitLine{CA}$.\\[6pt]
+If $\drawUnitLine{BC}=\drawUnitLine{CA}$ then\\
+$\drawAngle{A}=\drawAngle{B}$~(pr.~I.5);\\
+which is contrary to the hypothesis.\\[6pt]
+\drawUnitLine{BC} is not less than \drawUnitLine{CA}; for if it were,\\
+$\drawAngle{A}<\drawAngle{B}$~(pr.~I.18)\\
+which is contrary to the hypothesis:\\[4pt]
+$\therefore \drawUnitLine{BC}>\drawUnitLine{CA}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

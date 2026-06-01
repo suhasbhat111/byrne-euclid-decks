@@ -1,0 +1,53 @@
+% generator_I37.tex -- Prop I.37 (Theor.): triangles on same base between same parallels are equal.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amsmath}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,H,I,d[];%
+  d1:=(3/2u,0);d2:=(1/2u,-3u);d3:=(-7/4u,-3u);%
+  A:=(0,0);B:=A shifted d1;C:=A shifted d2;D:=C shifted d1;%
+  E:=C shifted -d3;F:=D shifted -d3;%
+  G:=(B--D) intersectionpoint (C--E);%
+  H:=11/10[F,A];I:=11/10[A,F];%
+  draw byPolygon(A,B,C)(byblue);%
+  draw byPolygon(B,C,G)(byyellow);%
+  draw byPolygon(C,D,G)(byyellow);%
+  draw byPolygon(D,G,E)(byblack);%
+  draw byPolygon(E,F,D)(byred);%
+  draw byLine(B,D,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(E,C,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,C,byred,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(F,D,byblue,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AC,CD,FD);%
+  draw byLine(H,I,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  draw byLabelsOnPolygon(H,A,B,E,F,I,noPoint)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(F,D,C,A)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXXVII. Theor.}
+\medskip\noindent\itshape
+Triangles \drawPolygon[bottom]{BCG,CDG} and
+\drawPolygon[bottom]{DGE,CDG} on the same base
+(\drawUnitLine{CD}) and between the same parallels are equal.
+\bigskip\noindent\upshape\begin{center}
+$\left.\begin{aligned}
+\mbox{Draw }\drawUnitLine{AC}&\parallel\drawUnitLine{BD}\\
+\drawUnitLine{FD}&\parallel\drawUnitLine{EC}
+\end{aligned}\right\}$~(pr.~I.31)\\[4pt]
+Produce \drawUnitLine{HI}.\\[4pt]
+\drawPolygon{ABC,BCG,CDG} and \drawPolygon{DGE,CDG,EFD}
+are parallelograms on the same base and between the same
+parallels, and therefore equal~(pr.~I.35).\\[4pt]
+$\therefore\left\{\begin{aligned}
+\drawPolygon{ABC,BCG,CDG}&=\mbox{twice }\drawPolygon{BCG,CDG}\\
+\drawPolygon{DGE,CDG,EFD}&=\mbox{twice }\drawPolygon{CDG,DGE}
+\end{aligned}\right\}$~(pr.~I.34)\\[4pt]
+$\therefore \drawPolygon{BCG,CDG}=\drawPolygon{CDG,DGE}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

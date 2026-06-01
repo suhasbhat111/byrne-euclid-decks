@@ -1,0 +1,71 @@
+% generator_I06.tex -- Prop I.6 (Theor.): equal angles => equal opposite sides.
+% Geometry and text from jemmybutton (CC-BY-SA). Build: lualatex generator_I06.tex
+\documentclass[12pt]{article}
+\usepackage{geometry}\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+\begin{document}
+
+\defineNewPicture[1/4]{%
+  pair A, B, C, D;%
+  A := (0, 0);%
+  B := A shifted (7/2u, 0);%
+  D := 1/2[A,B] shifted (0, 3u);%
+  C := 2/3[A, D];%
+  byAngleDefine(B, A, D, byyellow, SOLID_SECTOR);%
+  byAngleDefine(A, B, D, byblack,  SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(B, C, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, B, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, D, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, A, byblack,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, D, byblack,  DASHED_LINE, REGULAR_WIDTH);%
+  draw byNamedLine(BC);%
+  draw byNamedLineSeq(0)(CA,CD,BD,AB);%
+  draw byLabelsOnPolygon(A, C, D, B)(ALL_LABELS, 0);%
+}
+
+% STATEMENT
+\noindent
+\begin{minipage}[t]{0.45\linewidth}
+\centering\vspace{0pt}%
+\drawCurrentPicture
+\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}
+\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ VI. Theor.}
+
+\medskip\noindent\itshape
+In any triangle (\drawLine[bottom][triangleABD]{CA,CD,BD,AB})
+if two angles (\drawAngle{A} and \drawAngle{B}) are equal,
+the sides (\drawUnitLine{CA,CD} and \drawUnitLine{BD})
+opposite to them are also equal.
+
+\bigskip
+
+% PROOF
+\noindent\upshape
+For if the sides be not equal, let one of them
+\drawUnitLine{CA,CD} be greater than the other \drawUnitLine{BD},
+and from it cut off $\drawUnitLine{CA} = \drawUnitLine{BD}$~(pr.~I.3),
+draw \drawUnitLine{BC}.
+
+\medskip\begin{center}
+Then in \drawLine[bottom]{BC,AB,CA} and \triangleABD,\\
+$\drawUnitLine{CA} = \drawUnitLine{BD}$~(const.),\\
+$\drawAngle{A} = \drawAngle{B}$~(hyp.)\\
+and \drawUnitLine{AB} common,\\
+$\therefore$ the triangles are equal~(pr.~I.4)\\
+a part equal to the whole, which is absurd;\\[4pt]
+$\therefore$ neither of the sides \drawUnitLine{CA,CD}
+or \drawUnitLine{BD} is greater than the other,\\
+hence they are equal.
+\end{center}
+
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+
+\end{document}

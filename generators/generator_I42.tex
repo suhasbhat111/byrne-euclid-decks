@@ -1,0 +1,53 @@
+% generator_I42.tex -- Prop I.42 (Prob.): construct parallelogram equal to given triangle with given angle.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amsmath}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,H,I,J,d[];%
+  A:=(0,0);d1:=(8/5u,0);B:=A shifted d1;C:=B shifted (3/2u,0);%
+  D:=A shifted (u,-13/5u);E:=D shifted d1;%
+  F:=(B--E) intersectionpoint (D--C);%
+  G:=2[D,E];d2:=(-xpart(E)+xpart(D)-1/2u,0);%
+  H:=B shifted d2;I:=E shifted d2;J:=D shifted d2;%
+  draw byPolygon(A,B,F,D)(byyellow);%
+  draw byPolygon(D,E,F)(byyellow);%
+  draw byPolygon(C,F,E)(byblue);%
+  draw byPolygon(E,C,G)(byblack);%
+  byAngleDefine(B,E,D,byblue,SOLID_SECTOR);%
+  byAngleDefine(H,I,J,byyellow,SOLID_SECTOR);%
+  setAttribute("angle","Standalone","HIJ",1);%
+  draw byNamedAngleResized();%
+  draw byLine(B,E,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,D,byred,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,E,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,C,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(D,E,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(E,G,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(CE,AC,AD,DE,EG,noLine);%
+  draw byLabelsOnPolygon(G,E,D,A,B,C)(ALL_LABELS,0);%
+  startAutoLabeling;draw byNamedAngleSidesFull(HIJ)();stopAutoLabeling;%
+}
+\begin{center}\textbf{Book~I.\enspace Prop.\ XLII. Prob.}\end{center}
+\vspace{0.3cm}\noindent
+\begin{minipage}[t]{0.50\linewidth}\itshape
+To construct a parallelogram equal to a given triangle
+\drawPolygon[bottom]{DEF,CFE,ECG} and having an angle equal to a
+given rectilinear angle (\drawAngle{I}).
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\drawCurrentPicture\end{minipage}
+\vspace{0.5cm}
+\begin{center}
+Make $\drawUnitLine{DE}=\drawUnitLine{EG}$~(pr.~I.10)\\
+Draw \drawUnitLine{CE}.\\[4pt]
+Make $\drawAngle{E}=\drawAngle{I}$~(pr.~I.23)\\[4pt]
+$\left.\begin{aligned}
+\mbox{Draw }\drawUnitLine{AD}&\parallel\drawUnitLine{BE}\\
+\drawUnitLine{AC}&\parallel\drawUnitLine{DE}
+\end{aligned}\right\}$~(pr.~I.31)\\[6pt]
+$\drawPolygon{ABFD,DEF}=\mbox{ twice }\drawPolygon{DEF,CFE}$~(pr.~I.41)\\
+but $\drawPolygon{DEF,CFE}=\drawPolygon{ECG}$~(pr.~I.38)\\[4pt]
+$\therefore \drawPolygon{ABFD,DEF}=\drawPolygon{DEF,CFE,ECG}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{document}

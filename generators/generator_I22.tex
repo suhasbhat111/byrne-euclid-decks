@@ -1,0 +1,73 @@
+% generator_I22.tex -- Prop I.22 (Prob.): construct triangle from three given lines.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amsmath}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/2]{%
+  numeric r[],d;pair A,B,C,D,E,LI,LII,LIII,LIV,LV,LVI;path q[];%
+  r1:=2u;r2:=4/3u;r3:=(1/2)*(r1+r2);d:=1/3u;%
+  A:=(0,0);B:=A shifted (r3,0);%
+  q1:=(fullcircle scaled 2r1) shifted A;%
+  q2:=(fullcircle scaled 2r2) shifted B;%
+  C:=q1 intersectionpoint q2;%
+  D:=point 11/2 of q1;E:=point 3/4 of q2;%
+  LI:=(xpart(point 0 of q2),ypart(point 6 of q1)-1/2d);%
+  LII:=LI shifted (-r3,0);LIII:=LI shifted (0,-d);%
+  LIV:=LIII shifted (-r2,0);LV:=LIII shifted (0,-d);LVI:=LV shifted (-r1,0);%
+  draw byCircle.A(A,D,byblue,0,0,0);%
+  byLineDefine(A,D,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,E,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byyellow,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(BC,CA);%
+  draw byNamedLineSeq(0)(AD,AB,BE);%
+  draw byLineWithName(LII,LI,byblack,1,0)(L');%
+  draw byLineWithName(LIV,LIII,byred,1,0)(L'');%
+  draw byLineWithName(LVI,LV,byblue,1,0)(L''');%
+  draw byCircle.B(B,E,byred,0,0,0);%
+  draw byLabelsOnPolygon(D,A,C)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(E,B,A)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(A,C,B)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnCircle(D)(A);draw byLabelsOnCircle(E)(B);%
+  draw byLabelLine(0)(L',L'',L''');%
+}
+\begin{center}\textbf{Book~I.\enspace Prop.\ XXII. Prob.}\end{center}
+\vspace{0.3cm}\noindent
+\begin{minipage}[t]{0.50\linewidth}\itshape
+Given three right lines
+$\left\{\vcenter{%
+\nointerlineskip\hbox{\drawUnitLine{L'}}%
+\nointerlineskip\hbox{\drawUnitLine{L''}}%
+\nointerlineskip\hbox{\drawUnitLine{L'''}}}\right.$
+the sum of any two greater than the third, to construct a
+triangle whose sides shall be respectively equal to the given
+lines.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\drawCurrentPicture\end{minipage}
+\vspace{0.5cm}
+\begin{center}
+Assume $\drawUnitLine{AB}=\drawUnitLine{L'}$~(pr.~I.3).\\[4pt]
+$\left.\begin{aligned}
+\mbox{Draw }\drawUnitLine{BE}&=\drawUnitLine{L''}\\
+\mbox{and }\drawUnitLine{AD}&=\drawUnitLine{L'''}
+\end{aligned}\right\}\mbox{(pr.~I.2).}$\\[4pt]
+With \drawUnitLine{AD} and \drawUnitLine{BE} as radii, describe
+\offsetPicture{10pt}{0pt}{\drawFromCurrentPicture{%
+  draw byNamedLine(AD);draw byNamedCircle(A);%
+  draw byLabelLineEnd(A,D,0);draw byLabelLineEnd(D,A,0);%
+}} and
+\offsetPicture{10pt}{0pt}{\drawFromCurrentPicture{%
+  draw byNamedLine(BE);draw byNamedCircle(B);%
+  draw byLabelLineEnd(B,E,0);draw byLabelLineEnd(E,B,0);%
+}}~(post.~III);\\[4pt]
+draw \drawUnitLine{CA} and \drawUnitLine{BC},\\
+then will \drawLine[bottom]{CA,BC,AB} be the triangle required.\\[6pt]
+$\left.\begin{aligned}
+\mbox{For }\drawUnitLine{AB}&=\drawUnitLine{L'}\mbox{,}\\
+\drawUnitLine{BC}&=\drawUnitLine{BE}=\drawUnitLine{L''}\mbox{,}\\
+\mbox{and }\drawUnitLine{CA}&=\drawUnitLine{AD}=\drawUnitLine{L'''}\mbox{.}
+\end{aligned}\right\}\mbox{(const.)}$
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{document}

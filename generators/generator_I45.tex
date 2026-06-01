@@ -1,0 +1,63 @@
+% generator_I45.tex -- Prop I.45 (Prob.): construct parallelogram equal to given rectilinear figure with given angle.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amsmath}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/6][1/3]{%
+  pair A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,d[];%
+  numeric a,h[],b[],s[];a:=15;%
+  A:=(0,0);B:=A shifted (0,2u);C:=A shifted (4/3u,u);%
+  D:=A shifted (2u,-3/2u);E:=A shifted (-6/5u,-u);%
+  b1:=arclength(B--C);h1:=distanceToLine(A,B--C);s1:=(b1*h1)/2;%
+  b2:=arclength(C--D);h2:=distanceToLine(A,C--D);s2:=(b2*h2)/2;%
+  b3:=arclength(D--E);h3:=distanceToLine(A,D--E);s3:=(b3*h3)/2;%
+  d1:=(0,ypart(D)-u);d2:=(0,-b3/2) rotated -a;d3:=(h3*(1/cosd(a)),0);d6:=(u,0);%
+  F:=(-u,0) shifted d1;G:=F shifted d3;H:=F shifted d2;I:=G shifted d2;%
+  d4:=(2*(s2/b3)*(1/cosd(a)),0);J:=G shifted d4;K:=J shifted d2;%
+  d5:=(2*(s1/b3)*(1/cosd(a)),0);L:=J shifted d5;M:=L shifted d2;%
+  N:=L shifted d6;O:=M shifted d6;P:=K shifted d6;%
+  draw byPolygon(A,B,C)(byred);%
+  draw byPolygon(A,C,D)(byyellow);%
+  draw byPolygon(A,D,E)(byblue);%
+  byLineDefine(A,C,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,D,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AC,AD);%
+  draw byPolygon(F,G,I,H)(byblue);%
+  draw byPolygon(G,J,K,I)(byyellow);%
+  draw byPolygon(J,L,M,K)(byred);%
+  byAngleDefine(G,I,H,byyellow,SOLID_SECTOR);%
+  byAngleDefine(J,K,I,byblack,SOLID_SECTOR);%
+  byAngleDefine(L,M,K,byblue,SOLID_SECTOR);%
+  byAngleDefine(N,O,P,byred,SOLID_SECTOR);%
+  setAttribute("angle","Standalone","NOP",1);%
+  draw byNamedAngleResized();%
+  draw byLine(G,I,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(J,K,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLabelsOnPolygon(A,B,C,D,E)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(F,G,J,L,M,K,I,H)(ALL_LABELS,0);%
+  startAutoLabeling;draw byNamedAngleSidesFull(NOP)();stopAutoLabeling;%
+}
+\begin{center}\textbf{Book~I.\enspace Prop.\ XLV. Prob.}\end{center}
+\vspace{0.3cm}\noindent
+\begin{minipage}[t]{0.50\linewidth}\itshape
+To construct a parallelogram equal to a given rectilinear
+figure (\drawPolygon[middle]{ABC,ACD,ADE}) and having an angle
+equal to a given rectilinear angle (\drawAngle{O}).
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\drawCurrentPicture\end{minipage}
+\vspace{0.5cm}
+\begin{center}
+Draw \drawUnitLine{AD} and \drawUnitLine{AC} dividing the
+rectilinear figure into triangles.\\[4pt]
+Construct $\drawPolygon{FGIH}=\drawPolygon{ADE}$
+having $\drawAngle{I}=\drawAngle{O}$~(pr.~I.42)\\[4pt]
+to \drawUnitLine{GI} apply $\drawPolygon{GJKI}=\drawPolygon{ACD}$
+having $\drawAngle{K}=\drawAngle{O}$~(pr.~I.44)\\[4pt]
+to \drawUnitLine{JK} apply $\drawPolygon{JLMK}=\drawPolygon{ABC}$
+having $\drawAngle{M}=\drawAngle{O}$~(pr.~I.44)\\[4pt]
+$\therefore \drawPolygon{FGIH,GJKI,JLMK}=\drawPolygon{ABC,ACD,ADE}$\\[4pt]
+and \drawPolygon{FGIH,GJKI,JLMK} is a parallelogram~(pr.~I.29,~I.14,~I.30)\\
+having $\drawAngle{M}=\drawAngle{O}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{document}

@@ -1,0 +1,45 @@
+% generator_I38.tex -- Prop I.38 (Theor.): triangles on equal bases between same parallels are equal.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amsmath}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,H,I,J,d[];numeric h;%
+  h:=5/2u;d1:=(3/2u,0);d2:=(3/4u,-h);d3:=(7/3u,h);d4:=(-1/4u,-h);%
+  A:=(0,0);B:=A shifted d1;C:=A shifted d2;D:=C shifted d1;%
+  E:=C shifted d3;F:=D shifted d3;G:=E shifted d4;H:=F shifted d4;%
+  I:=(xpart(A),ypart(C));J:=(xpart(F),ypart(C));%
+  draw byPolygon(A,B,C)(byyellow);%
+  draw byPolygon(B,C,D)(byred);%
+  draw byPolygon(E,F,H)(byblack);%
+  draw byPolygon(E,G,H)(byblue);%
+  draw byLine(B,D,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(E,G,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,C,byblue,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(F,H,byred,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,F,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AC,AF,FH);%
+  draw byLine(I,J,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  draw byLabelsOnPolygon(A,B,E,F,noPoint)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(H,G,D,C,noPoint)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXXVIII. Theor.}
+\medskip\noindent\itshape
+Triangles (\drawPolygon[bottom]{BCD} and \drawPolygon[bottom]{EGH})
+on equal bases and between the same parallels are equal.
+\bigskip\noindent\upshape\begin{center}
+$\left.\begin{aligned}
+\mbox{Draw }\drawUnitLine{AC}&\parallel\drawUnitLine{BD}\\
+\mbox{and }\drawUnitLine{FH}&\parallel\drawUnitLine{EG}
+\end{aligned}\right\}$~(pr.~I.31)\\[4pt]
+$\drawPolygon{ABC,BCD}=\drawPolygon{EFH,EGH}$~(pr.~I.36);\\[4pt]
+but $\drawPolygon{ABC,BCD}=\mbox{twice }\drawPolygon{BCD}$~(pr.~I.34),\\
+and $\drawPolygon{EFH,EGH}=\mbox{twice }\drawPolygon{EGH}$~(pr.~I.34),\\[4pt]
+$\therefore \drawPolygon{BCD}=\drawPolygon{EGH}$~(ax.~VII).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

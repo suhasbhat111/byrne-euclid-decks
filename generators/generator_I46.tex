@@ -1,0 +1,46 @@
+% generator_I46.tex -- Prop I.46 (Prob.): construct a square on a given straight line.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/4]{%
+  pair A,B,C,D;numeric d;d:=7/2u;%
+  A:=(0,0);B:=A shifted (d,0);C:=A shifted (0,-d);D:=A shifted (d,-d);%
+  byAngleDefine(B,A,C,byblack,SOLID_SECTOR);%
+  byAngleDefine(D,B,A,byblue,SOLID_SECTOR);%
+  byAngleDefine(C,D,B,byred,SOLID_SECTOR);%
+  byAngleDefine(A,C,D,byyellow,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(A,B,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,D,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(D,C,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,BD,DC,CA);%
+  draw byLabelsOnPolygon(A,B,D,C)(ALL_LABELS,0);%
+}
+\begin{center}\textbf{Book~I.\enspace Prop.\ XLVI. Prob.}\end{center}
+\vspace{0.3cm}\noindent
+\begin{minipage}[t]{0.50\linewidth}\itshape
+Upon a given straight line (\drawUnitLine{DC}) to construct a
+square.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\drawCurrentPicture\end{minipage}
+\vspace{0.5cm}
+\begin{center}
+Draw $\drawUnitLine{CA}\perp\mbox{ and }=\drawUnitLine{DC}$~(pr.~I.11,~I.3)\\[4pt]
+Draw $\drawUnitLine{AB}\parallel\drawUnitLine{DC}$,\\
+and meeting \drawUnitLine{BD} drawn $\parallel\drawUnitLine{CA}$.\\[6pt]
+In \drawFromCurrentPicture[bottom]{%
+  startTempAngleScale(angleScale*3/4);%
+  draw byNamedAngle(A,B,C,D);%
+  draw byNamedLineSeq(0)(AB,BD,DC,CA);%
+  draw byLabelsOnPolygon(A,B,D,C)(ALL_LABELS,0);%
+  stopTempAngleScale;}\\
+$\drawUnitLine{CA}=\drawUnitLine{DC}$~(const.)\\
+$\drawAngle{C}=\mbox{a right angle}$~(const.)\\[4pt]
+$\therefore \drawAngle{D}=\drawAngle{C}=\mbox{a right angle}$~(pr.~I.29),\\
+and the remaining sides and angles must be equal~(pr.~I.34).\\[4pt]
+And $\therefore$ \drawFromCurrentPicture[middle]{draw byNamedLineSeq(0)(AB,BD,DC,CA);draw byLabelsOnPolygon(A,B,D,C)(ALL_LABELS,0);} is a square~(def.~30).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{document}

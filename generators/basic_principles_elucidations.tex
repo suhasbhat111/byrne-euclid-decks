@@ -1,0 +1,213 @@
+% basic_principles_elucidations.tex -- Book I. Elucidations (jemmybutton-matched).
+% Text and figures from jemmybutton byrne-en-latex.tex (CC-BY-SA).
+% Build: lualatex basic_principles_elucidations.tex  ->  basic_principles_elucidations.pdf
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Book~I.}}\\[4pt]
+  {\Large\textbf{Elucidations}}
+\end{center}
+
+\vspace{0.4cm}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.3cm}
+
+\noindent
+Geometry has for its principal objects the exposition and explanation of the
+properties of \emph{figure}, and figure is defined to be the relation which
+subsists between the boundaries of space. Space or magnitude is of three kinds,
+\emph{linear}, \emph{superficial}, and \emph{solid}.
+
+\vspace{0.5cm}
+
+% --- Figure 1: simple angle at vertex A ---
+\defineNewPicture{%
+  pair A, B, C;%
+  numeric s;%
+  s := 3/2u;%
+  A := (0, s);%
+  B := (1/2s, 0);%
+  C := B xscaled -1;%
+  draw byAngle.A(B, A, C, byyellow, SOLID_SECTOR);%
+  byLineDefine(B, A, byblue, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, A, byred,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(CA,BA);%
+  label.urt(btex A etex, A);%
+}
+\noindent
+\begin{minipage}[t]{0.28\linewidth}
+  \vspace{0pt}\centering
+  \drawCurrentPicture
+\end{minipage}\hfill
+\begin{minipage}[t]{0.68\linewidth}
+  \vspace{0pt}
+  Angles might properly be considered as a fourth species of magnitude.
+  Angular magnitude evidently consists of parts, and must therefore be
+  admitted to be a species of quantity. The student must not suppose that
+  the magnitude of an angle is affected by the length of the straight lines
+  which include it and of whose mutual divergence it is the measure.
+  The \emph{vertex} of an angle is the point where the \emph{sides} or
+  \emph{legs} of the angle meet, as~A.
+\end{minipage}
+
+\vspace{0.6cm}
+
+% --- Figure 2: multiple angles at vertex C ---
+\defineNewPicture{%
+  pair B, C, D, E, F, G, H;%
+  numeric s;%
+  s := 5/4u;%
+  C := (0, 0);%
+  B := dir(0)*s;%
+  D := dir(50)*s;%
+  E := dir(-30)*s;%
+  F := E scaled -1;%
+  G := D scaled -1;%
+  H := B scaled -1;%
+  angleScale := 4/3;%
+  draw byAngle(E, C, B, byyellow, SOLID_SECTOR);%
+  draw byAngle(B, C, D, byblack,  SOLID_SECTOR);%
+  draw byAngle(D, C, F, byblue,   SOLID_SECTOR);%
+  draw byAngle(F, C, H, byred,    SOLID_SECTOR);%
+  draw byAngle(H, C, G, byyellow, ARC_SECTOR);%
+  draw byAngle(G, C, E, byblue,   ARC_SECTOR);%
+  draw byLine(B, H, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byLine(D, G, byred,   SOLID_LINE, REGULAR_WIDTH);%
+  draw byLine(E, F, byblack, SOLID_LINE, REGULAR_WIDTH);%
+  label.bot(btex C etex, C shifted (0, -3pt));%
+  label.bot(btex B etex, B);%
+  label.lrt(btex D etex, D);%
+  label.llft(btex F etex, F);%
+  label.bot(btex H etex, H);%
+  label.lrt(btex G etex, G);%
+  label.llft(btex E etex, E);%
+}
+\noindent
+\begin{minipage}[t]{0.34\linewidth}
+  \vspace{0pt}\centering
+  \drawCurrentPicture
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\linewidth}
+  \vspace{0pt}
+  An angle is often designated by a single letter when its legs are the only
+  lines which meet together at its vertex. Thus the red and blue lines form
+  the yellow angle, which in other systems would be called angle~A. But when
+  more than two lines meet in the same point, it was necessary by former
+  methods, in order to avoid confusion, to employ three letters to designate
+  an angle about that point, the letter which marked the vertex of the angle
+  being always placed in the middle. Thus the black and red lines meeting
+  together at~C, form the blue angle, and has been usually denominated the
+  angle~FCD or~DCF. The lines~FC and~CD are the legs of the angle; the
+  point~C is its vertex. In like manner the black angle would be designated
+  the angle~DCB or~BCD. The red and blue angles added together, or the
+  angle~HCF added to~FCD, make the angle~HCD; and so of other angles.
+\end{minipage}
+
+\vspace{0.5cm}
+
+\noindent
+When the legs of an angle are produced or prolonged beyond its vertex, the
+angles made by them on both sides of the vertex are said to be
+\emph{vertically opposite} to each other: thus the red and yellow angles are
+said to be vertically opposite angles.
+
+\vspace{0.4cm}
+
+\noindent
+\emph{Superposition} is the process by which one magnitude may be conceived
+to be placed upon another, so as exactly to cover it, or so that every part
+of each shall exactly coincide.
+
+\vspace{0.4cm}
+
+\noindent
+A line is said to be \emph{produced}, when it is extended, prolonged, or it
+has its length increased, and the increase of length which it receives is
+called the \emph{produced part}, or its \emph{production}.
+
+\vspace{0.4cm}
+
+\noindent
+The entire length of the line or lines which enclose a figure, is called its
+\emph{perimeter}. The first six books of Euclid treat of plane figures only.
+A line drawn from the centre of a circle to its circumference, is called a
+\emph{radius}. That side of a right angled triangle, which is opposite to the
+right angle, is called the \emph{hypotenuse}. An oblong is defined in the
+second book, and called a \emph{rectangle}. All lines which are considered in
+the first six books of the Elements are supposed to be in the same plane.
+
+\vspace{0.4cm}
+
+\noindent
+The \emph{straight-edge} and \emph{compasses} are the only instruments, the
+use of which is permitted in Euclid, or plain Geometry. To declare this
+restriction is the object of the \emph{postulates}.
+
+\vspace{0.4cm}
+
+\noindent
+The \emph{Axioms} of geometry are certain general propositions, the truth of
+which is taken to be self-evident and incapable of being established by
+demonstration.
+
+\vspace{0.4cm}
+
+\noindent
+\emph{Propositions} are those results which are obtained in geometry by a
+process of reasoning. There are two species of propositions in geometry,
+\emph{problems} and \emph{theorems}.
+
+\vspace{0.4cm}
+
+\noindent
+A \emph{Problem} is a proposition in which something is proposed to be done;
+as a line to be drawn under some given conditions, a circle to be described,
+some figure to be constructed, \&c. The \emph{solution} of the problem
+consists in showing how the thing required may be done by the aid of the
+straight-edge and compasses. The \emph{demonstration} consists in proving
+that the process indicated in the solution attains the required end.
+
+\vspace{0.4cm}
+
+\noindent
+A \emph{Theorem} is a proposition in which the truth of some principle is
+asserted. This principle must be deduced from the axioms and definitions, or
+other truths previously and independently established. To show this is the
+object of demonstration.
+
+\vspace{0.5cm}
+
+\begin{center}
+A \emph{Problem} is analogous to a postulate.\\[4pt]
+A \emph{Theorem} resembles an axiom.\\[4pt]
+A \emph{Postulate} is a problem, the solution to which is assumed.\\[4pt]
+An \emph{Axiom} is a theorem, the truth of which is granted without demonstration.
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent
+A \emph{Corollary} is an inference deduced immediately from a proposition.
+
+\vspace{0.4cm}
+
+\noindent
+A \emph{Scholium} is a note or observation on a proposition not containing an
+inference of sufficient importance to entitle it to the name of
+\emph{corollary}.
+
+\vspace{0.4cm}
+
+\noindent
+A \emph{Lemma} is a proposition merely introduced for the purpose of
+establishing some more important proposition.
+
+\end{document}

@@ -1,0 +1,58 @@
+% generator_I16.tex -- Prop I.16 (Theor.): exterior angle > either remote interior angle.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/4]{%
+  pair A,B,C,D,E,F,G;%
+  A:=(0,0);B:=A shifted (u,7/2u);C:=A shifted (3u,0);%
+  D:=B shifted (3u,0);E=whatever[A,D]=whatever[B,C];%
+  F:=(xpart(D),ypart(A));G:=4/3[B,C];%
+  byAngleDefine(B,A,C,byblue,SOLID_SECTOR);%
+  byAngleDefine(C,B,A,byblack,SOLID_SECTOR);%
+  byAngleDefine(A,E,B,byyellow,SOLID_SECTOR);%
+  byAngleDefine(D,E,C,byyellow,SOLID_SECTOR);%
+  byAngleDefine(E,C,D,byblack,SOLID_SECTOR);%
+  byAngleDefine(G,C,A,byred,SOLID_SECTOR);%
+  byAngleDefine(D,C,F,byblack,ARC_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(C,F,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,G,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,E,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(E,C,byblue,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,E,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(E,D,byred,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byyellow,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,C,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AE,ED,CD);%
+  draw byNamedLineSeq(0)(EC,CG,noLine,CF,AC,AB,BE);%
+  draw byLabelsOnPolygon(F,A,B,E,D,C)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(F,C,G,noPoint)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XVI. Theor.}
+\medskip\noindent\itshape
+If a side of a triangle (\drawLine[bottom]{BE,EC,AC,AB}) is produced, the
+external angle
+(\drawFromCurrentPicture[middle][anglesECDpDCF]{startAutoLabeling;%
+draw byNamedAngleSides(ECD,DCF)(CF);stopAutoLabeling;})
+is greater than either of the internal remote angles
+(\drawAngle{B} or \drawAngle{A}).
+\bigskip\noindent\upshape
+Make $\drawUnitLine{BE}=\drawUnitLine{EC}$~(pr.~I.10);\\
+draw \drawUnitLine{AE} and produce it until $\drawUnitLine{ED}=\drawUnitLine{AE}$;\\
+draw \drawUnitLine{CD}.\\[6pt]
+In \drawLine{BE,AE,AB} and \drawLine{EC,ED,CD};\\
+$\drawUnitLine{BE}=\drawUnitLine{EC}$, $\drawAngle{AEB}=\drawAngle{DEC}$
+and $\drawUnitLine{AE}=\drawUnitLine{ED}$~(const.,~pr.~I.15),\\
+$\therefore \drawAngle{B}=\drawAngle{ECD}$~(pr.~I.4),\\
+$\therefore \anglesECDpDCF\ > \drawAngle{B}$.\\[6pt]
+In like manner it can be shown, that if \drawUnitLine{BC} be produced,
+$\drawAngle{GCA}>\drawAngle{A}$\\
+and therefore \anglesECDpDCF\ which is $=\drawAngle{GCA}$ is $>\drawAngle{A}$.
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

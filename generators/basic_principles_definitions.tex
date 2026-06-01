@@ -1,0 +1,390 @@
+% front_matter_definitions.tex -- Book I. Definitions (35 definitions, jemmybutton-matched).
+% Figure geometry and text from jemmybutton byrne-en-latex.tex (CC-BY-SA).
+% Build: lualatex front_matter_definitions.tex  ->  front_matter_definitions.pdf
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+% Helper: definition block without figure (full-width, centered)
+\newcommand{\deftext}[2]{%
+  \vspace{0.35cm}%
+  \begin{center}%
+    \textbf{#1.}\\[2pt]%
+    #2%
+  \end{center}%
+}
+
+% Helper: definition block with figure (figure left, text right)
+\newcommand{\deffig}[2]{%
+  \vspace{0.35cm}%
+  \noindent%
+  \begin{minipage}[t]{0.34\linewidth}%
+    \vspace{0pt}\centering%
+    \drawCurrentPicture%
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{0.62\linewidth}%
+    \vspace{0pt}\centering%
+    \textbf{#1.}\\[4pt]%
+    #2%
+  \end{minipage}%
+  \vspace{0.1cm}%
+}
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Book~I.}}\\[4pt]
+  {\Large\textbf{Definitions}}
+\end{center}
+
+\vspace{0.4cm}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.2cm}
+
+% --- Defs 1–8: no figures ---
+
+\deftext{1}{A \emph{point} is that which has no parts.}
+
+\deftext{2}{A \emph{line} is length without breadth.}
+
+\deftext{3}{The extremities of a line are points.}
+
+\deftext{4}{The straight or right line is that which lies evenly between its extremities.}
+
+\deftext{5}{A \emph{surface} is that which has length and breadth only.}
+
+\deftext{6}{The extremities of a surface are lines.}
+
+\deftext{7}{A \emph{plane surface} is that which lies evenly between its extremities.}
+
+\deftext{8}{A \emph{plane angle} is the inclination of two lines to one another,
+in a plane, which meet together, but are not in the same direction.}
+
+% --- Def 9: plane rectilinear angle ---
+\defineNewPicture{%
+  pair A, B, C;%
+  A := (0, 0);%
+  B := (2/3u, 2/3u);%
+  C := (u, ypart(A));%
+  byAngleDefine(B, A, C, byyellow, SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(A, B, byblue, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, C, byred,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AC,AB);%
+}
+\deffig{9}{A \emph{plane rectilinear angle} is the inclination of two straight lines
+to one another, which meet together, but are not in the same straight line.}
+
+% --- Def 10: right angle ---
+\defineNewPicture{%
+  pair A, B, C, D;%
+  A := (0, 0);%
+  B := (u, 0);%
+  C := (0, 2/3u);%
+  D := (-u, 0);%
+  byAngleDefine(B, A, C, byblack, ARC_SECTOR);%
+  byAngleDefine(D, A, C, byblack, ARC_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(D, B, byblack, SOLID_LINE, REGULAR_WIDTH);%
+  draw byLine(A, C, byblack, SOLID_LINE, REGULAR_WIDTH);%
+}
+\deffig{10}{When one straight line standing on another straight line makes the
+adjacent angles equal, each of these angles is called a \emph{right angle},
+and each of these lines is said to be \emph{perpendicular} to one another.}
+
+% --- Def 11: obtuse angle ---
+\defineNewPicture{%
+  pair A, B, C;%
+  A := (0, 0);%
+  B := (-2/3u, 2/3u);%
+  C := (u, ypart(A));%
+  byAngleDefine(B, A, C, byred, SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(A, B, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, C, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AC,AB);%
+}
+\deffig{11}{An \emph{obtuse angle} is an angle greater than a right angle.}
+
+% --- Def 12: acute angle ---
+\defineNewPicture{%
+  pair A, B, C;%
+  A := (0, 0);%
+  B := (2/3u, 2/3u);%
+  C := (u, ypart(A));%
+  byAngleDefine(B, A, C, byblue, SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(A, B, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, C, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AC,AB);%
+}
+\deffig{12}{An \emph{acute angle} is an angle less than a right angle.}
+
+% --- Defs 13–14: no figures ---
+
+\deftext{13}{A \emph{term} or \emph{boundary} is the extremity of any thing.}
+
+\deftext{14}{A \emph{figure} is a surface enclosed on all sides by a line or lines.}
+
+% --- Def 15: circle ---
+\defineNewPicture{%
+  pair O, A, B, C, D, E;%
+  numeric r;%
+  r := 1/2u;%
+  O := (0, 0);%
+  A := dir(0)   scaled r;%
+  B := dir(60)  scaled r;%
+  C := dir(130) scaled r;%
+  D := dir(180) scaled r;%
+  E := dir(-60) scaled r;%
+  draw byLine(O, B)(byblack, SOLID_LINE, REGULAR_WIDTH);%
+  draw byLine(O, C)(byred,   SOLID_LINE, REGULAR_WIDTH);%
+  draw byLine(O, E)(byyellow,SOLID_LINE, REGULAR_WIDTH);%
+  draw byLine(D, A)(byblue,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byCircleR(O, r, byred, 0, 0, 0);%
+}
+\deffig{15}{A \emph{circle} is a plane figure, bounded by one continued line,
+called its circumference or periphery; and having a certain point within it,
+from which all straight lines drawn to its circumference are equal.}
+
+% --- Def 16: no figure ---
+\deftext{16}{This point (from which the equal lines are drawn) is called the \emph{centre} of the circle.}
+
+% --- Def 17: diameter ---
+\defineNewPicture{%
+  pair O, A, B;%
+  numeric r;%
+  r := 1/2u;%
+  O := (0, 0);%
+  A := dir(0)   scaled r;%
+  B := dir(180) scaled r;%
+  draw byLine(A, B)(byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  draw byCircleR(O, r, byred, 0, 0, 0);%
+}
+\deffig{17}{A \emph{diameter} of a circle is a straight line drawn through the
+centre, terminated both ways in the circumference.}
+
+% --- Def 18: semicircle ---
+\defineNewPicture{%
+  pair O, A, B;%
+  numeric r;%
+  r := 1/2u;%
+  O := (0, 0);%
+  A := dir(0)   scaled r;%
+  B := dir(180) scaled r;%
+  draw byLine(A, B)(byblue, SOLID_LINE, REGULAR_WIDTH);%
+  draw byArc(O, A, B)(r, byyellow, 0, 0, 0, 0);%
+  draw byArc(O, B, A)(r, byyellow, 1, 0, 0, 0);%
+}
+\deffig{18}{A \emph{semicircle} is the figure contained by the diameter, and
+the part of the circle cut off by the diameter.}
+
+% --- Def 19: segment ---
+\defineNewPicture{%
+  pair O, A, B;%
+  path P;%
+  numeric r;%
+  r := 1/2u;%
+  P := fullcircle scaled 2r;%
+  O := (0, 0);%
+  A := point 1 of P;%
+  B := point 3 of P;%
+  draw byLine(A, B)(byred, SOLID_LINE, REGULAR_WIDTH);%
+  draw byArc(O, A, B)(r, byblue, 0, 0, 0, 0);%
+  draw byArc(O, B, A)(r, byblue, 1, 0, 0, 0);%
+}
+\deffig{19}{A \emph{segment} of a circle is a figure contained by a straight
+line and the part of the circumference which it cuts off.}
+
+% --- Defs 20–21: no figures ---
+\deftext{20}{A figure contained by straight lines only, is called a \emph{rectilinear figure}.}
+
+\deftext{21}{A \emph{triangle} is a rectilinear figure included by three sides.}
+
+% --- Def 22: quadrilateral (with figure) ---
+\defineNewPicture{%
+  pair A, B, C, D;%
+  A := (0, 0);%
+  B := (u, 1/2u);%
+  C := (-1/2u, -4/3u);%
+  D := (4/3u,  -u);%
+  draw byLine(C, B)(byred,    SOLID_LINE, REGULAR_WIDTH);%
+  draw byLine(A, D)(byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, B, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, C, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, D, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, D, byblack,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(BD,CD,AC,AB);%
+  draw byLabelsOnPolygon(A, B, D, C)(ALL_LABELS, 0);%
+}
+\deffig{22}{A \emph{quadrilateral figure} is one which is bounded by four sides.
+The straight lines \drawUnitLine{AD} and \drawUnitLine{CB} connecting the
+vertices of the opposite angles of a quadrilateral figure, are called its
+\emph{diagonals}.}
+
+% --- Def 23: no figure ---
+\deftext{23}{A \emph{polygon} is a rectilinear figure bounded by more than four sides.}
+
+% --- Def 24: equilateral triangle ---
+\defineNewPicture{%
+  pair A, B, C;%
+  A := dir(-30)  scaled 1/2u;%
+  B := dir(-150) scaled 1/2u;%
+  C := dir(90)   scaled 1/2u;%
+  byLineDefine(A, B, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, C, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, A, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,BC,CA);%
+}
+\deffig{24}{A triangle whose sides are equal, is said to be \emph{equilateral}.}
+
+% --- Def 25: isosceles triangle ---
+\defineNewPicture{%
+  pair A, B, C;%
+  A := dir(-60)  scaled 1/2u;%
+  B := dir(-120) scaled 1/2u;%
+  C := dir(90)   scaled 1/2u;%
+  byLineDefine(A, B, byblue, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, C, byred,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, A, byred,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,BC,CA);%
+}
+\deffig{25}{A triangle which has only two sides equal is called an \emph{isosceles triangle}.}
+
+% --- Def 26: no figure ---
+\deftext{26}{A \emph{scalene triangle} is one which has no two sides equal.}
+
+% --- Def 27: right-angled triangle ---
+\defineNewPicture{%
+  pair A, B, C;%
+  A := (0, 0);%
+  B := (-u, 0);%
+  C := (0, 3/4u);%
+  byLineDefine(A, B, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, C, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, A, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,BC,CA);%
+}
+\deffig{27}{A \emph{right angled triangle} is that which has a right angle.}
+
+% --- Def 28: obtuse-angled triangle ---
+\defineNewPicture{%
+  pair A, B, C;%
+  A := (-1/4u, 0);%
+  B := (-u, 0);%
+  C := (0, 3/4u);%
+  byLineDefine(A, B, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, C, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, A, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,BC,CA);%
+}
+\deffig{28}{An \emph{obtuse angled triangle} is that which has an obtuse angle.}
+
+% --- Def 29: acute-angled triangle ---
+\defineNewPicture{%
+  pair A, B, C;%
+  A := (0, 0);%
+  B := (-u, 0);%
+  C := (-1/4u, 3/4u);%
+  byLineDefine(A, B, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, C, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, A, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,BC,CA);%
+}
+\deffig{29}{An \emph{acute angled triangle} is that which has three acute angles.}
+
+% --- Def 30: square ---
+\defineNewPicture{%
+  pair A, B, C, D;%
+  numeric s;%
+  s := u;%
+  A := (0, 0);%
+  B := (s, 0);%
+  C := (0, s);%
+  D := (s, s);%
+  byLineDefine(A, B, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, C, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, D, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, D, byblack,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,AC,CD,BD);%
+}
+\deffig{30}{Of four-sided figures, a \emph{square} is that which has all its sides equal,
+and all its angles right angles.}
+
+% --- Def 31: rhombus ---
+\defineNewPicture{%
+  pair A, B, C, D;%
+  numeric s;%
+  s := u;%
+  A := (0, 0);%
+  B := (s, 0);%
+  C := A shifted (dir(80) scaled s);%
+  D := B shifted (dir(80) scaled s);%
+  byLineDefine(A, B, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, C, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, D, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, D, byblack,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,AC,CD,BD);%
+}
+\deffig{31}{A \emph{rhombus} is that which has all its sides equal, but its angles
+are not right angles.}
+
+% --- Def 32: oblong ---
+\defineNewPicture{%
+  pair A, B, C, D;%
+  numeric s;%
+  s := u;%
+  A := (0, 0);%
+  B := (4/3s, 0);%
+  C := (0, 3/4s);%
+  D := (4/3s, 3/4s);%
+  byLineDefine(A, B, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, C, byred,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, D, byred,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, D, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,AC,CD,BD);%
+}
+\deffig{32}{An \emph{oblong} is that which has all its angles right angles, but
+has not all its sides equal.}
+
+% --- Def 33: rhomboid ---
+\defineNewPicture{%
+  pair A, B, C, D;%
+  numeric s;%
+  s := u;%
+  A := (0, 0);%
+  B := (s, 0);%
+  C := (1/4s, 3/4s);%
+  D := (s + 1/4s, 3/4s);%
+  byLineDefine(A, B, byblue, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, C, byred,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, D, byred,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, D, byblue, SOLID_LINE, REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,AC,CD,BD);%
+}
+\deffig{33}{A \emph{rhomboid} is that which has its opposite sides equal to one
+another, but all its sides are not equal nor its angles right angles.}
+
+% --- Def 34: no figure ---
+\deftext{34}{All other quadrilateral figures are called \emph{trapeziums}.}
+
+% --- Def 35: parallel lines ---
+\defineNewPicture{%
+  pair A, B, C, D;%
+  numeric s;%
+  s := u;%
+  A := (0, 0);%
+  B := (4/3s, 0);%
+  C := (0, 1/2s);%
+  D := (4/3s, 1/2s);%
+  draw byLine(A, B, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  draw byLine(C, D, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+}
+\deffig{35}{\emph{Parallel} straight lines are such as are in the same plane,
+and which being produced continually in both directions would never meet.}
+
+\end{document}

@@ -1,0 +1,52 @@
+% generator_I40.tex -- Prop I.40 (Theor.): equal triangles on equal bases, same side => between same parallels.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,H,d;%
+  A:=(0,0);B:=A shifted (3/2u,0);%
+  C:=A shifted (-3/2u,-9/4u);d:=(7/4u,0);%
+  D:=C shifted d;E:=B shifted (-2/3u,-9/4u);F:=E shifted d;%
+  G:=5/4[E,B];H:=2[B,G];%
+  draw byPolygon(A,C,D)(byyellow);%
+  draw byPolygon(B,E,F)(byred);%
+  draw byPolygon(G,B,F)(byblue);%
+  draw byLine(E,H,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,G,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(F,G,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(E,F,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(D,E,byblue,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(-4/5)(AB,AG,FG,EF,DE,CD);%
+  draw byLabelsOnPolygon(G,F,E,D,C,A)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(A,B,G)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(A,G,H,noPoint)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XL. Theor.}
+\medskip\noindent\itshape
+Equal triangles (\drawPolygon[bottom]{ACD} and
+\drawPolygon[bottom]{BEF}) on equal bases, and on the same
+side, are between the same parallels.
+\bigskip\noindent\upshape
+If \drawUnitLine{AB} which joins the vertices of triangles
+be not $\parallel\drawUnitLine{CD,DE,EF}$,\\
+draw $\drawUnitLine{AG}\parallel\drawUnitLine{CD,DE,EF}$~(pr.~I.31),\\
+meeting \drawUnitLine{EH}.\\
+Draw \drawUnitLine{FG}.\\[4pt]
+$\because \drawUnitLine{AG}\parallel\drawUnitLine{CD,DE,EF}$~(const.)\\
+$\drawPolygon{ACD}=\drawPolygon{BEF,GBF}$~(pr.~I.38)\\
+but $\drawPolygon{ACD}=\drawPolygon{BEF}$~(hyp.)\\[4pt]
+$\therefore \drawPolygon{BEF}=\drawPolygon{BEF,GBF}$,\\
+a part equal to the whole, which is absurd.\\[4pt]
+$\therefore \drawUnitLine{AG}\not\parallel\drawUnitLine{CD,DE,EF}$:
+and in the same manner it can be demonstrated that no other
+line except \drawUnitLine{AB} is $\parallel\drawUnitLine{CD,DE,EF}$:
+$\therefore \drawUnitLine{AB}\parallel\drawUnitLine{CD,DE,EF}$.
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

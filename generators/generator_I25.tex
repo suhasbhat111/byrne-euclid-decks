@@ -1,0 +1,50 @@
+% generator_I25.tex -- Prop I.25 (Theor.): two triangles with two equal sides; greater base => greater angle (converse of I.24).
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,d;%
+  A:=(0,0);B:=A shifted (u,-3u);C:=A shifted (-7/4u,-4u);%
+  d:=(0,-9/2u);D:=A shifted d;%
+  E:=((B shifted -A) rotated -10) shifted d;%
+  F:=C shifted d;%
+  byAngleDefine(B,A,C,byyellow,SOLID_SECTOR);%
+  byAngleDefine(E,D,F,byblack,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(A,B,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,BC,CA);%
+  byLineDefine(D,E,byblue,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(E,F,byyellow,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(F,D,byred,SOLID_LINE,THIN_WIDTH);%
+  draw byNamedLineSeq(0)(DE,EF,FD);%
+  draw byLabelsOnPolygon(A,B,C)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(D,E,F)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXV. Theor.}
+\medskip\noindent\itshape
+If two triangles have two sides (\drawUnitLine{AB} and
+\drawUnitLine{CA}) of the one respectively equal to two sides
+(\drawUnitLine{DE} and \drawUnitLine{FD}) of the other, but
+their bases unequal, the angle subtended by the greater base
+(\drawUnitLine{BC}) of the one, must be greater than the angle
+subtended by the less base (\drawUnitLine{EF}) of the other.
+\bigskip\noindent\upshape\begin{center}
+$\drawAngle{A}=\mbox{, }>\mbox{ or }<\drawAngle{D}$\\[6pt]
+$\drawAngle{A}$ is not equal to $\drawAngle{D}$\\
+for if $\drawAngle{A}=\drawAngle{D}$ then $\drawUnitLine{CB}=\drawUnitLine{FE}$~(pr.~I.4)\\
+which is contrary to the hypothesis;\\[4pt]
+$\drawAngle{A}$ is not less than $\drawAngle{D}$\\
+for if $\drawAngle{A}<\drawAngle{D}$\\
+then $\drawUnitLine{CB}<\drawUnitLine{FE}$~(pr.~I.24),\\
+which is also contrary to the hypothesis:\\[4pt]
+$\therefore \drawAngle{A}>\drawAngle{D}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

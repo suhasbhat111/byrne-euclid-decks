@@ -1,0 +1,45 @@
+% generator_I23.tex -- Prop I.23 (Prob.): make an angle equal to a given angle at a given point.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture{%
+  pair A,B,C,D,E,F,G,H,J,d;%
+  A:=(0,0);B:=A shifted (7/2u,0);C:=A shifted (3u,11/5u);%
+  D:=5/4[A,B];E:=7/6[A,C];d:=(0,-3u);%
+  F:=A shifted d;G:=B shifted d;H:=C shifted d;J:=D shifted d;%
+  byAngleDefine(B,A,C,byred,SOLID_SECTOR);%
+  byAngleDefine(G,F,H,byblue,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(B,D,byblack,DASHED_LINE,THIN_WIDTH);%
+  byLineDefine(C,E,byblue,DASHED_LINE,THIN_WIDTH);%
+  byLineDefine(A,B,byblack,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(C,A,byblue,SOLID_LINE,THIN_WIDTH);%
+  draw byLine(B,C,byred,SOLID_LINE,THIN_WIDTH);%
+  draw byNamedLineSeq(0)(CE,CA,AB,BD);%
+  byLineDefine(G,J,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(F,G,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(G,H,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(H,F,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(noLine,GH,HF,FG,GJ);%
+  draw byLabelsOnPolygon(D,B,A,C,E)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(noPoint,J,G,F,H,G)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+}
+\begin{center}\textbf{Book~I.\enspace Prop.\ XXIII. Prob.}\end{center}
+\vspace{0.3cm}\noindent
+\begin{minipage}[t]{0.50\linewidth}\itshape
+At a given point (\drawPointL{F}) in a given straight line
+(\drawUnitLine{FG,GJ}), to make an angle equal to a given
+rectilinear angle (\drawAngle{A}).
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\drawCurrentPicture\end{minipage}
+\vspace{0.5cm}
+\begin{center}
+Draw \drawUnitLine{BC} between any two points in the legs of the given angle.\\[4pt]
+Construct \drawLine[bottom]{HF,GH,FG}~(pr.~I.22)\\
+so that $\drawUnitLine{FG}=\drawUnitLine{AB}$,\quad$\drawUnitLine{HF}=\drawUnitLine{CA}$\\
+and $\drawUnitLine{GH}=\drawUnitLine{BC}$.\\[6pt]
+Then $\drawAngle{A}=\drawAngle{F}$~(pr.~I.8).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{document}

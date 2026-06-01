@@ -1,0 +1,48 @@
+% generator_I32.tex -- Prop I.32 (Theor.): exterior angle = sum of two remote interior angles; angle sum = 2 right angles.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amsmath}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/6]{%
+  pair A,B,C,D,E;%
+  A:=(0,0);B:=A shifted (-u,-3u);C:=A shifted (5/2u,-3u);%
+  D:=4/3[B,A];E:=A shifted (unitvector(C-B) scaled 3/2u);%
+  byAngleDefine(D,A,E,byred,SOLID_SECTOR);%
+  byAngleDefine(E,A,C,byblack,SOLID_SECTOR);%
+  byAngleDefine(C,A,B,byblue,SOLID_SECTOR);%
+  byAngleDefine(A,B,C,byyellow,SOLID_SECTOR);%
+  byAngleDefine(B,C,A,byblack,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(A,E,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,D,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(CA,noLine,AD,AB,BC);%
+  draw byLabelsOnPolygon(C,B,A,D,noPoint,E,A)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXXII. Theor.}
+\medskip\noindent\itshape
+If any side (\drawUnitLine{AB}) of a triangle be produced, the
+external angle (\drawAngle{DAE,EAC}) is equal to the sum of
+the two internal and opposite angles (\drawAngle{B} and
+\drawAngle{C}), and the three internal angles of any triangle
+taken together are equal to two right angles.
+\bigskip\noindent\upshape\begin{center}
+Through the point \drawPointL[middle][AD,AE]{A} draw\\
+$\drawUnitLine{AE}\parallel\drawUnitLine{BC}$~(pr.~I.31).\\[4pt]
+Then $\left\{\begin{aligned}
+\drawAngle{DAE}&=\drawAngle{B}\\
+\drawAngle{EAC}&=\drawAngle{C}
+\end{aligned}\right\}$~(pr.~I.29),\\[4pt]
+$\therefore \drawAngle{B}+\drawAngle{C}=\drawAngle{DAE,EAC}$~(ax.~II),\\[4pt]
+and therefore\\
+$\drawAngle{B}+\drawAngle{CAB}+\drawAngle{C}$\\
+$=\drawAngle{DAE,EAC,CAB}=\drawTwoRightAngles$~(pr.~I.13).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

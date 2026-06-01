@@ -1,0 +1,98 @@
+% generator_I04.tex -- Prop I.4 (SAS): two triangles equal in every respect.
+% Figure geometry derived from Byrne's 1847 construction (public domain).
+% Prose authored from the 1847 original, NOT from the CC-BY-SA upstream source.
+% Build: lualatex generator_I04.tex  ->  generator_I04.pdf
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+\begin{document}
+
+% FIGURE: two congruent triangles ABC (upper) and DEF (lower).
+% ABC: AB red, BC black, CA blue; angles A yellow, B blue, C red.
+% DEF: same colors, thinner lines to distinguish.
+% DEF is ABC shifted straight down by d.
+\defineNewPicture[1/5]{%
+    pair A, B, C, D, E, F, d;%
+    A := (0, 0);%
+    B := A shifted (-5/2u, -7/2u);%
+    C := A shifted (1/2u, -3u);%
+    d := (0, -4u);%
+    D := A shifted d;%
+    E := B shifted d;%
+    F := C shifted d;%
+    % Layer-1 assertions: corresponding sides must be equal (DEF is a translate of ABC)
+    if abs(abs(A-B) - abs(D-E)) > 0.01: errmessage "ASSERT: AB != DE"; fi;%
+    if abs(abs(C-A) - abs(F-D)) > 0.01: errmessage "ASSERT: CA != FD"; fi;%
+    if abs(abs(B-C) - abs(E-F)) > 0.01: errmessage "ASSERT: BC != EF"; fi;%
+    % Triangle ABC
+    byAngleDefine(B, A, C, byyellow, SOLID_SECTOR);%
+    byAngleDefine(A, B, C, byblue,   SOLID_SECTOR);%
+    byAngleDefine(B, C, A, byred,    SOLID_SECTOR);%
+    draw byNamedAngleResized(BAC, ABC, BCA);%
+    byLineDefine(A, B, byred,   SOLID_LINE, REGULAR_WIDTH);%
+    byLineDefine(B, C, byblack, SOLID_LINE, REGULAR_WIDTH);%
+    byLineDefine(C, A, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+    draw byNamedLineSeq(0)(CA,BC,AB);%
+    draw byLabelsOnPolygon(B, A, C)(ALL_LABELS, 1);%
+    % Triangle DEF (same colors, thin lines)
+    byAngleDefine(E, D, F, byyellow, SOLID_SECTOR);%
+    byAngleDefine(D, E, F, byblue,   SOLID_SECTOR);%
+    byAngleDefine(E, F, D, byred,    SOLID_SECTOR);%
+    draw byNamedAngleResized(EDF, DEF, EFD);%
+    byLineDefine(D, E, byred,   SOLID_LINE, THIN_WIDTH);%
+    byLineDefine(E, F, byblack, SOLID_LINE, THIN_WIDTH);%
+    byLineDefine(F, D, byblue,  SOLID_LINE, THIN_WIDTH);%
+    draw byNamedLineSeq(0)(FD,EF,DE);%
+    draw byLabelsOnPolygon(F, E, D)(ALL_LABELS, 0);%
+}
+
+% STATEMENT
+\noindent
+\begin{minipage}[t]{0.45\linewidth}
+\centering
+\vspace{0pt}%
+\drawCurrentPicture
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.52\linewidth}
+\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ IV. Theor.}
+
+\medskip
+
+\noindent\itshape
+If two triangles have two sides of the one respectively equal to two sides of
+the other, (\drawUnitLine{AB} to \drawUnitLine{DE} and \drawUnitLine{CA} to
+\drawUnitLine{FD}) and the angles (\drawAngle{A} and \drawAngle{D}) contained
+by those equal sides also equal; then their bases or their sides
+(\drawUnitLine{BC} and \drawUnitLine{EF}) are also equal: and the remaining
+angles opposite to equal sides are respectively equal
+($\drawAngle{B} = \drawAngle{E}$ and $\drawAngle{C} = \drawAngle{F}$):
+and the triangles are equal in every respect.
+
+\bigskip
+
+% PROOF
+\noindent\upshape
+Let two triangles be conceived, to be so placed, that the vertex of one of the
+equal angles (\drawAngle{A} or \drawAngle{D}) shall fall upon that of the
+other, and \drawUnitLine{AB} to coincide with \drawUnitLine{DE}, then will
+\drawUnitLine{CA} coincide with \drawUnitLine{FD} if applied: consequently
+\drawUnitLine{BC} will coincide with \drawUnitLine{EF}, or two straight lines
+will enclose a space, which is impossible~(ax.~X), therefore
+$\drawUnitLine{BC} = \drawUnitLine{EF}$,
+$\drawAngle{B} = \drawAngle{E}$ and $\drawAngle{C} = \drawAngle{F}$,
+and as the triangles \drawLine[bottom][triangleABC]{AB,CA,BC} and
+\drawLine[bottom][triangleDEF]{DE,FD,EF} coincide, when applied,
+they are equal in every respect.
+
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+
+\end{minipage}
+
+\end{document}

@@ -1,0 +1,43 @@
+% generator_I20.tex -- Prop I.20 (Theor.): sum of two sides of triangle > third side.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture{%
+  pair A,B,C,D;%
+  A:=(0,0);B:=A shifted (7/2u,0);D:=A shifted (4/3u,3/2u);%
+  C:=((fullcircle scaled 2arclength(D--B)) shifted D) intersectionpoint (D--10[A,D]);%
+  byAngleDefine(B,C,A,byred,SOLID_SECTOR);%
+  byAngleDefine(C,B,D,byblue,SOLID_SECTOR);%
+  byAngleDefine(D,B,A,byyellow,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(B,D,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byblue,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(D,A,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(BD);%
+  draw byNamedLineSeq(0)(DA,CD,BC,AB);%
+  draw byLabelsOnPolygon(D,C,B,A)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XX. Theor.}
+\medskip\noindent\itshape
+Any two sides \drawUnitLine{DA} and \drawUnitLine{BD} of a triangle
+\drawLine[bottom]{DA,BD,AB} taken together are greater than the third
+side (\drawUnitLine{AB}).
+\bigskip\noindent\upshape\begin{center}
+Produce \drawUnitLine{DA}, and\\
+make $\drawUnitLine{CD}=\drawUnitLine{BD}$~(pr.~I.3);\\
+draw \drawUnitLine{BC}.\\[6pt]
+Then $\because \drawUnitLine{CD}=\drawUnitLine{BD}$~(const.),\\
+$\drawAngle{CBD}=\drawAngle{C}$~(pr.~I.5)\\[4pt]
+$\therefore \drawAngle{CBD,DBA}>\drawAngle{C}$~(ax.~IX)\\[4pt]
+$\therefore \drawUnitLine{DA}+\drawUnitLine{CD}>\drawUnitLine{AB}$~(pr.~I.19)\\[4pt]
+and $\therefore \drawUnitLine{DA}+\drawUnitLine{BD}>\drawUnitLine{AB}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

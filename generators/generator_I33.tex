@@ -1,0 +1,43 @@
+% generator_I33.tex -- Prop I.33 (Theor.): lines joining extremities of equal parallel lines are equal and parallel.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/4]{%
+  pair A,B,C,D,d[];%
+  d1:=(5/2u,0);d2:=(-7/8u,-3u);%
+  A:=(0,0);B:=A shifted d1;C:=A shifted d2;D:=C shifted d1;%
+  byAngleDefine(B,A,D,byyellow,SOLID_SECTOR);%
+  byAngleDefine(D,A,C,byred,SOLID_SECTOR);%
+  byAngleDefine(C,D,A,byblack,SOLID_SECTOR);%
+  byAngleDefine(A,D,B,byblue,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(A,D,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byred,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,C,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,D,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,BD,CD,AC);%
+  draw byLabelsOnPolygon(A,B,D,C)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXXIII. Theor.}
+\medskip\noindent\itshape
+Straight lines (\drawUnitLine{AC} and \drawUnitLine{BD}) which
+join the adjacent extremities of two equal and parallel
+straight lines (\drawUnitLine{AB} and \drawUnitLine{CD}), are
+themselves equal and parallel.
+\bigskip\noindent\upshape\begin{center}
+Draw \drawUnitLine{AD} the diagonal.\\[6pt]
+$\drawUnitLine{AB}=\drawUnitLine{CD}$~(hyp.)\\
+$\drawAngle{BAD}=\drawAngle{CDA}$~(pr.~I.29)\\
+and \drawUnitLine{AD} common to the two triangles;\\[4pt]
+$\therefore \drawUnitLine{AC}=\drawUnitLine{BD}$,
+and $\drawAngle{ADB}=\drawAngle{DAC}$~(pr.~I.4);\\[4pt]
+and $\therefore \drawUnitLine{AC}\parallel\drawUnitLine{BD}$~(pr.~I.27).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

@@ -1,0 +1,70 @@
+% generator_I09.tex -- Prop I.9 (Prob.): bisect a given rectilinear angle.
+% Geometry and text from jemmybutton (CC-BY-SA). Build: lualatex generator_I09.tex
+\documentclass[12pt]{article}
+\usepackage{geometry}\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+\begin{document}
+
+\defineNewPicture{%
+  pair A, B, C, D, E, F;%
+  A := (0, 5/3u);%
+  B := (-4/3u, 0);%
+  C := B xscaled -1;%
+  D = whatever[B, B shifted ((C-B) rotated -60)]
+    = whatever[C, C shifted ((B-C) rotated 60)];%
+  E := 5/4[A, B];%
+  F := 5/4[A, C];%
+  byAngleDefine(B, A, D, byblue,   SOLID_SECTOR);%
+  byAngleDefine(C, A, D, byyellow, SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(B, C, byyellow, SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, D, byblack,  SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(D, B, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, D, byblue,   SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(A, B, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, A, byred,    SOLID_LINE, REGULAR_WIDTH);%
+  byLineDefine(B, E, byred,    DASHED_LINE, REGULAR_WIDTH);%
+  byLineDefine(C, F, byred,    DASHED_LINE, REGULAR_WIDTH);%
+  draw byNamedLine(BC,AD);%
+  draw byNamedLineSeq(0)(DB,CD);%
+  draw byNamedLineSeq(0)(BE,AB,CA,CF);%
+  draw byLabelsOnPolygon(D, B, A, C)(ALL_LABELS, 0);%
+}
+
+% STATEMENT
+\begin{center}\textbf{Book~I.\enspace Prop.\ IX. Prob.}\end{center}
+\vspace{0.3cm}
+\noindent
+\begin{minipage}[t]{0.50\linewidth}
+\itshape To bisect a given rectilinear angle
+(\drawAngle{BAD,CAD}).
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}
+\centering\drawCurrentPicture
+\end{minipage}
+
+\vspace{0.5cm}
+
+% PROOF
+\begin{center}
+Take $\drawUnitLine{AB} = \drawUnitLine{CA}$~(pr.~I.3)
+
+draw \drawUnitLine{BC}, upon which describe
+\drawLine[bottom]{CD,DB,BC}~(pr.~I.1),\\
+draw \drawUnitLine{AD}.
+
+\medskip
+$\because \drawUnitLine{AB} = \drawUnitLine{CA}$~(const.)\\
+and \drawUnitLine{AD} common to the two triangles\\
+and $\drawUnitLine{CD} = \drawUnitLine{DB}$~(const.),
+
+$\therefore \drawAngle{BAD} = \drawAngle{CAD}$~(pr.~I.8).
+\end{center}
+
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+
+\end{document}

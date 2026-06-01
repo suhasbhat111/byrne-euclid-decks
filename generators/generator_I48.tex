@@ -1,0 +1,45 @@
+% generator_I48.tex -- Prop I.48 (Theor.): converse of Pythagorean theorem.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/4]{%
+  pair A,B,C,D;numeric d;d:=7/4u;%
+  A:=(0,0);B:=A shifted (0,4u);C:=A shifted (d,0);D:=A shifted (-d,0);%
+  byAngleDefine(B,A,C,byred,SOLID_SECTOR);%
+  byAngleDefine(D,A,B,byyellow,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(A,B,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,C,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,D,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,C,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,D,byred,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AC,AD,BD,BC);%
+  draw byLabelsOnPolygon(D,B,C,A)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XLVIII. Theor.}
+\medskip\noindent\itshape
+If the square of one side (\drawUnitLine{BC}) of a triangle is
+equal to the squares of the other two sides (\drawUnitLine{AB}
+and \drawUnitLine{AC}), the angle (\drawAngle{BAC}) subtended
+by that side is a right angle.
+\bigskip\noindent\upshape\begin{center}
+Draw $\drawUnitLine{AD}\perp\drawUnitLine{AB}$ and
+$=\drawUnitLine{AC}$~(pr.~I.11,~I.3)\\
+and draw \drawUnitLine{BD} also.\\[6pt]
+Since $\drawUnitLine{AD}=\drawUnitLine{AC}$~(const.)\\
+$\drawUnitLine{AD}^2=\drawUnitLine{AC}^2$;\\[4pt]
+$\therefore \drawUnitLine{AD}^2+\drawUnitLine{AB}^2=\drawUnitLine{AC}^2+\drawUnitLine{AB}^2$\\[4pt]
+but $\drawUnitLine{AD}^2+\drawUnitLine{AB}^2=\drawUnitLine{BD}^2$~(pr.~I.47),\\
+and $\drawUnitLine{AC}^2+\drawUnitLine{AB}^2=\drawUnitLine{BC}^2$~(hyp.)\\[4pt]
+$\therefore \drawUnitLine{BD}^2=\drawUnitLine{BC}^2$,\\[4pt]
+$\therefore \drawUnitLine{BD}=\drawUnitLine{BC}$;\\[4pt]
+and $\therefore \drawAngle{DAB}=\drawAngle{BAC}$~(pr.~I.8),\\[4pt]
+consequently \drawAngle{BAC} is a right angle.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

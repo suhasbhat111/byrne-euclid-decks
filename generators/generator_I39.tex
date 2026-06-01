@@ -1,0 +1,53 @@
+% generator_I39.tex -- Prop I.39 (Theor.): equal triangles on same base, same side => between same parallels.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G;%
+  A:=(0,0);B:=A shifted (5/2u,0);%
+  C:=A shifted (3/4u,-5/2u);D:=C shifted (3u,0);%
+  E=whatever[A,D]=whatever[B,C];%
+  F:=11/8[C,B];G:=13/8[C,B];%
+  draw byPolygon(A,B,E)(byred);%
+  draw byPolygon(A,E,C)(byyellow);%
+  draw byPolygon(B,E,D)(byblack);%
+  draw byPolygon(E,C,D)(byyellow);%
+  draw byPolygon(F,B,D)(byblue);%
+  byLineDefine(A,F,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(D,F,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,G,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(-4/5)(AB,AF,DF,CD,CG);%
+  draw byLabelsOnPolygon(F,D,C,A)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(A,B,F)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(A,F,G,noPoint)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXXIX. Theor.}
+\medskip\noindent\itshape
+Equal triangles \drawPolygon[bottom]{AEC,ECD} and
+\drawPolygon[bottom]{BED,ECD} on the same base
+(\drawUnitLine{CD}) and on the same side of it, are between
+the same parallels.
+\bigskip\noindent\upshape
+If \drawUnitLine{AB}, which joins the vertices of the
+triangles, be not $\parallel\drawUnitLine{CD}$, draw
+$\drawUnitLine{AF}\parallel\drawUnitLine{CD}$~(pr.~I.31),
+meeting \drawUnitLine{CG}.\\[4pt]
+Draw \drawUnitLine{DF}.\\[4pt]
+$\because \drawUnitLine{AF}\parallel\drawUnitLine{CD}$~(const.)\\
+$\drawPolygon{AEC,ECD}=\drawPolygon{BED,ECD,FBD}$~(pr.~I.37);\\
+but $\drawPolygon{AEC,ECD}=\drawPolygon{BED,ECD}$~(hyp.);\\[4pt]
+$\therefore \drawPolygon{BED,ECD}=\drawPolygon{BED,ECD,FBD}$,\\
+a part equal to the whole, which is absurd.\\[4pt]
+$\therefore \drawUnitLine{AF}\not\parallel\drawUnitLine{CD}$;
+and in the same manner it can be demonstrated that no other
+line except \drawUnitLine{AB} is $\parallel\drawUnitLine{CD}$;
+$\therefore \drawUnitLine{AB}\parallel\drawUnitLine{CD}$.
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

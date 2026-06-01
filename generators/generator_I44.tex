@@ -1,0 +1,71 @@
+% generator_I44.tex -- Prop I.44 (Prob.): apply parallelogram to given line, equal to given triangle, with given angle.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amsmath}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5][1/2]{%
+  pair A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,d[];path q[];%
+  d1:=(3u,0);d2:=(-3/2u,-3u);d3:=(3/2u,5/2u);d4:=-d2+1/2*d1;%
+  A:=(0,0);B:=A shifted d1;C:=A shifted d2;D:=C shifted d1;%
+  E:=2/5[C,B];%
+  q1:=(E shifted d1)--(E shifted -d1);%
+  q2:=(E shifted d2)--(E shifted -d2);%
+  F:=q1 intersectionpoint (A--C);%
+  G:=q1 intersectionpoint (B--D);%
+  H:=q2 intersectionpoint (A--B);%
+  I:=q2 intersectionpoint (C--D);%
+  J:=A shifted d3;%
+  K:=J shifted (2*(xpart(A)-xpart(H)),0);%
+  L:=(xpart(1/3[J,K]),ypart(F)-ypart(A)+ypart(J));%
+  M:=A shifted d4;N:=F shifted d4;O:=E shifted d4;%
+  draw byPolygon(J,K,L)(byred);%
+  draw byPolygon(A,H,E,F)(byyellow);%
+  draw byPolygon(E,G,D,I)(byblue);%
+  byAngleDefine(A,F,E,byblue,SOLID_SECTOR);%
+  byAngleDefine(F,E,I,byred,SOLID_SECTOR);%
+  byAngleDefine(E,I,D,byblack,SOLID_SECTOR);%
+  byAngleDefine(M,N,O,byyellow,SOLID_SECTOR);%
+  setAttribute("angle","Standalone","MNO",1);%
+  draw byNamedAngleResized();%
+  draw byLine(B,E,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(E,C,byblack,SOLID_LINE,THIN_WIDTH);%
+  byLineDefine(A,F,byred,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(F,C,byblack,SOLID_LINE,THIN_WIDTH);%
+  draw byLine(H,E,byblue,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,G,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,H,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(H,B,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(F,E,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(E,G,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byyellow,DASHED_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(FE,EG,BG,HB,AH,AF,FC,CD);%
+  draw byLabelsOnPolygon(K,J,L)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(F,A,H,B,G,D,I,C)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(F,E,H)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  startAutoLabeling;draw byNamedAngleSidesFull(MNO)();stopAutoLabeling;%
+}
+\begin{center}\textbf{Book~I.\enspace Prop.\ XLIV. Prob.}\end{center}
+\vspace{0.3cm}\noindent
+\begin{minipage}[t]{0.50\linewidth}\itshape
+To a given straight line (\drawUnitLine{EG}) to apply a
+parallelogram equal to a given triangle (\drawPolygon[middle]{JKL}),
+and having an angle equal to a given rectilinear angle
+(\drawAngle{N}).
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\drawCurrentPicture\end{minipage}
+\vspace{0.5cm}
+\begin{center}
+Make $\drawPolygon{AHEF}=\drawPolygon{JKL}$ with $\drawAngle{F}=\drawAngle{N}$~(pr.~I.42)\\
+and having one of its sides \drawUnitLine{FE} conterminous with
+and in continuation of \drawUnitLine{EG}.\\[4pt]
+Produce \drawUnitLine{AH} till it meets $\drawUnitLine{BG}\parallel\drawUnitLine{HE}$;\\
+draw \drawUnitLine{BE} produce it till it meets \drawUnitLine{AF} continued;\\
+draw $\drawUnitLine{CD}\parallel\drawUnitLine{FE,EG}$ meeting \drawUnitLine{BG}
+produced and produce \drawUnitLine{HE}.\\[4pt]
+$\drawPolygon{AHEF}=\drawPolygon{EGDI}$~(pr.~I.43)\\
+but $\drawPolygon{AHEF}=\drawPolygon{JKL}$~(const.)\\[4pt]
+$\therefore \drawPolygon{EGDI}=\drawPolygon{JKL}$;\\[4pt]
+and $\drawAngle{F}=\drawAngle{E}=\drawAngle{I}=\drawAngle{N}$~(pr.~I.29,~const.).
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{document}

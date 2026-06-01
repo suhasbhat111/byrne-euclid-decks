@@ -1,0 +1,81 @@
+% generator_I01.tex -- Prop I.1: construct an equilateral triangle on a given line.
+% Reference: jemmybutton vector recreation, page 25.
+% Build: lualatex generator_I01.tex  ->  generator_I01.pdf
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+\begin{document}
+
+% FIGURE (defined once; all proof steps reuse these points)
+\defineNewPicture[1/2]{%
+    pair A, B, C;%
+    path P[];%
+    numeric r;%
+    r := 3/2u;%
+    A := (0, 0);%
+    B := (r, 0);%
+    P1 := fullcircle scaled 2r;%
+    P2 := fullcircle scaled 2r shifted B;%
+    C := P1 intersectionpoint P2;%
+    % Layer-1 assertions: all sides equal, C lies on both construction circles
+    if abs(abs(A-B) - abs(B-C)) > 0.01: errmessage "ASSERT: AB != BC"; fi;%
+    if abs(abs(B-C) - abs(C-A)) > 0.01: errmessage "ASSERT: BC != CA"; fi;%
+    if abs(abs(C-A) - r) > 0.01: errmessage "ASSERT: C not on circle A"; fi;%
+    if abs(abs(C-B) - r) > 0.01: errmessage "ASSERT: C not on circle B"; fi;%
+    byLineDefine(A, B, byblack, SOLID_LINE, REGULAR_WIDTH);%
+    byLineDefine(B, C, byred,   SOLID_LINE, REGULAR_WIDTH);%
+    byLineDefine(C, A, byyellow,SOLID_LINE, REGULAR_WIDTH);%
+    draw byNamedLineSeq(-1)(AB,CA,BC);%
+    draw byCircle.A(A, B, byblue, 0, 0,  1/2);%
+    draw byCircle.B(B, A, byred,  0, 0, -1/2);%
+    draw byLabelsOnPolygon(A, C, B)(ALL_LABELS, 1);%
+}
+
+% STATEMENT
+\begin{center}
+\textbf{Book~I.\enspace Prop.\ I. Prob.}
+\end{center}
+
+\vspace{0.4cm}
+\noindent
+\begin{minipage}[t]{0.50\linewidth}
+\itshape On a given finite straight line
+(\drawUnitLine{AB}) to describe an equilateral triangle.
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.46\linewidth}
+\centering
+\drawCurrentPicture
+\end{minipage}
+
+\vspace{0.6cm}
+
+% PROOF
+\begin{center}
+Describe \offsetPicture{15pt}{0pt}{\drawFromCurrentPicture{%
+    draw byNamedLine(AB);%
+    draw byNamedCircle(A);%
+    draw byLabelLineEnd(A, B, 0);%
+    draw byLabelLineEnd(B, A, 1);%
+}} and \offsetPicture{15pt}{0pt}{\drawFromCurrentPicture{%
+    draw byNamedLine(AB);%
+    draw byNamedCircle(B);%
+    draw byLabelLineEnd(A, B, 1);%
+    draw byLabelLineEnd(B, A, 0);%
+}} (post.\ III);\\[4pt]
+draw \drawUnitLine{CA} and \drawUnitLine{BC} (post.\ I).\\[4pt]
+Then will \drawLine[bottom][triangleABC]{AB,CA,BC} be equilateral.\\[8pt]
+For \quad $\drawUnitLine{AB} = \drawUnitLine{CA}$ \quad (def.\ 15);\\
+and \quad $\drawUnitLine{AB} = \drawUnitLine{BC}$ \quad (def.\ 15);\\
+$\therefore \drawUnitLine{CA} = \drawUnitLine{BC}$ \quad (ax.\ I);\\[6pt]
+and therefore \triangleABC\ is the equilateral triangle required.
+\end{center}
+
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+
+\end{document}

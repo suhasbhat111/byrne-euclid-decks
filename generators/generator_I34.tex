@@ -1,0 +1,52 @@
+% generator_I34.tex -- Prop I.34 (Theor.): opposite sides and angles of parallelogram are equal; diagonal bisects it.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amsmath}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/4]{%
+  pair A,B,C,D,d[];%
+  d1:=(5/2u,0);d2:=(-7/8u,-3u);%
+  A:=(0,0);B:=A shifted d1;C:=A shifted d2;D:=C shifted d1;%
+  byAngleDefine(B,A,D,byblue,SOLID_SECTOR);%
+  byAngleDefine(D,A,C,byred,SOLID_SECTOR);%
+  byAngleDefine(C,D,A,byyellow,SOLID_SECTOR);%
+  byAngleDefine(A,D,B,byred,SOLID_SECTOR);%
+  byAngleDefine(A,C,D,byblack,SOLID_SECTOR);%
+  byAngleDefine(D,B,A,byblack,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(A,D,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,D,byred,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,C,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,D,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLineSeq(0)(AB,BD,CD,AC);%
+  draw byLabelsOnPolygon(A,B,D,C)(ALL_LABELS,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXXIV. Theor.}
+\medskip\noindent\itshape
+The opposite sides and angles of any parallelogram are equal,
+and the diagonal (\drawUnitLine{AD}) divides it into two equal
+parts.
+\bigskip\noindent\upshape\begin{center}
+$\because\left\{\begin{aligned}
+\drawAngle{BAD}&=\drawAngle{CDA}\\
+\drawAngle{DAC}&=\drawAngle{ADB}
+\end{aligned}\right\}$~(pr.~I.29)\\[4pt]
+and \drawUnitLine{AD} common to the two triangles.\\[6pt]
+$\therefore\left\{\begin{aligned}
+\drawUnitLine{AB}&=\drawUnitLine{CD}\\
+\drawUnitLine{AC}&=\drawUnitLine{BD}\\
+\drawAngle{B}&=\drawAngle{C}
+\end{aligned}\right\}$~(pr.~I.26)\\[4pt]
+and $\drawAngle{BAD,DAC}=\drawAngle{CDA,ADB}$~(ax.~II).\\[4pt]
+Therefore the opposite sides and angles of the parallelogram
+are equal: and as the triangles \drawLine{AD,CD,AC} and
+\drawLine{AB,BD,AD} are equal in every respect~(pr.~I.4),
+the diagonal divides the parallelogram into two equal parts.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

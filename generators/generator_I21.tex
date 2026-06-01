@@ -1,0 +1,53 @@
+% generator_I21.tex -- Prop I.21 (Theor.): lines from interior point to base < other two sides; angle greater.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E;%
+  A:=(0,0);B:=A shifted (7/2u,0);C:=A shifted (3u,4u);%
+  D:=1/2[1/2[A,B],C];%
+  E=whatever[A,D]=whatever[B,C];%
+  byAngleDefine(B,D,A,byred,SOLID_SECTOR);%
+  byAngleDefine(B,E,D,byblue,SOLID_SECTOR);%
+  byAngleDefine(B,C,A,byyellow,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  byLineDefine(B,D,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,D,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(D,E,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(A,B,byblue,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(B,E,byred,DASHED_LINE,REGULAR_WIDTH);%
+  byLineDefine(E,C,byred,SOLID_LINE,REGULAR_WIDTH);%
+  byLineDefine(C,A,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byNamedLine(BD);%
+  draw byNamedLineSeq(0)(AD,DE);%
+  draw byNamedLineSeq(0)(CA,EC,BE,AB);%
+  draw byLabelsOnPolygon(A,C,E,B)(ALL_LABELS,0);%
+  draw byLabelsOnPolygon(A,D,E)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXI. Theor.}
+\medskip\noindent\itshape
+If from any point (\drawPointL[middle]{D}) within a triangle
+\drawLine[bottom]{CA,EC,BE,AB}, straight lines be drawn to the
+extremities of one side (\drawUnitLine{AB}), these lines must be
+together less than the other two sides, but must contain a greater
+angle.
+\bigskip\noindent\upshape\begin{center}
+Produce \drawUnitLine{AD},\\
+$\drawUnitLine{CA}+\drawUnitLine{EC}>\drawUnitLine{AD,DE}$~(pr.~I.20),\\
+add \drawUnitLine{BE} to each,\\
+$\drawUnitLine{CA}+\drawUnitLine{EC,BE}>\drawUnitLine{AD,DE}+\drawUnitLine{BE}$~(ax.~IV)\\[4pt]
+in the same manner it may be shown that\\
+$\drawUnitLine{AD,DE}+\drawUnitLine{BE}>\drawUnitLine{AD}+\drawUnitLine{BD}$,\\
+$\therefore \drawUnitLine{CA}+\drawUnitLine{EC,BE}>\drawUnitLine{AD}+\drawUnitLine{BD}$,\\
+which was to be proved.\\[4pt]
+Again $\drawAngle{E}>\drawAngle{C}$~(pr.~I.16),\\
+and also $\drawAngle{D}>\drawAngle{E}$~(pr.~I.16),\\[4pt]
+$\therefore \drawAngle{D}>\drawAngle{C}$.
+\end{center}
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

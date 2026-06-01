@@ -1,0 +1,58 @@
+% generator_I29.tex -- Prop I.29 (Theor.): parallel lines => alternate angles equal; also external = internal and co-interior = 2 right angles.
+\documentclass[12pt]{article}\usepackage{geometry}\geometry{a5paper,margin=1.5cm}
+\usepackage[lining]{ebgaramond}\usepackage{amssymb}\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+\begin{document}
+\defineNewPicture[1/5]{%
+  pair A,B,C,D,E,F,G,H,I,J,d[];%
+  A:=(0,0);B:=A shifted (7/2u,0);d1:=(0,-2u);%
+  C:=A shifted d1;D:=B shifted d1;E:=11/20[A,B];F:=9/20[C,D];%
+  G:=7/4[F,E];H:=4/3[E,F];d2:=(3/2u,1/2u);%
+  I:=E shifted -d2;J:=E shifted d2;%
+  byAngleDefine(I,E,A,byblue,SOLID_SECTOR);%
+  byAngleDefine(H,E,I,byyellow,SOLID_SECTOR);%
+  byAngleDefine(B,E,H,byblack,SOLID_SECTOR);%
+  byAngleDefine(G,E,B,byred,SOLID_SECTOR);%
+  byAngleDefine(G,F,D,byblack,SOLID_SECTOR);%
+  draw byNamedAngleResized();%
+  draw byLine(I,E,byblack,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(E,J,byblack,DASHED_LINE,REGULAR_WIDTH);%
+  draw byLine(A,B,byyellow,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(C,D,byred,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLine(G,H,byblue,SOLID_LINE,REGULAR_WIDTH);%
+  draw byLabelLine(0)(AB,CD,GH);%
+  draw byLabelsOnPolygon(A,E,G)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelsOnPolygon(H,F,C)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL,0);%
+  draw byLabelPoint(I,lineAngle.IE-90,1);%
+  draw byLabelPoint(J,lineAngle.EJ+90,1);%
+}
+\noindent\begin{minipage}[t]{0.45\linewidth}\centering\vspace{0pt}%
+\drawCurrentPicture\end{minipage}\hfill
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}%
+\textbf{Book~I.\enspace Prop.\ XXIX. Theor.}
+\medskip\noindent\itshape
+A straight line (\drawUnitLine{GH}) falling on two parallel
+straight lines (\drawUnitLine{AB} and \drawUnitLine{CD}), makes
+the alternate angles equal to one another; and also the
+external equal to the internal and opposite angle on the same
+side; and the two internal angles on the same side together
+equal to two right angles.
+\bigskip\noindent\upshape
+For if the alternate angles \drawAngle{IEA,HEI} and
+\drawAngle{GFD} be not equal, draw \drawUnitLine{IE}, making
+$\drawAngle{HEI}=\drawAngle{GFD}$~(pr.~I.23).\\[4pt]
+Therefore $\drawUnitLine{IE,EJ}\parallel\drawUnitLine{CD}$~(pr.~I.27)
+and therefore two straight lines which intersect are parallel
+to the same straight line, which is impossible~(ax.~XII).\\[4pt]
+Hence \drawAngle{IEA,HEI} and \drawAngle{GFD} are not unequal,
+that is, they are equal:
+$\drawAngle{IEA,HEI}=\drawAngle{GEB}$~(pr.~I.15);
+$\therefore \drawAngle{GEB}=\drawAngle{GFD}$, the external
+angle equal to the internal and opposite on the same side:
+if \drawAngle{BEH} be added to both, then
+$\drawAngle{GFD}+\drawAngle{BEH}=\drawAngle{BEH,GEB}=\drawTwoRightAngles$~(pr.~I.13).
+That is to say, the two internal angles at the same side of
+the cutting line are equal to two right angles.
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+\end{minipage}
+\end{document}

@@ -1,0 +1,112 @@
+% generator_I02.tex -- Prop I.2 (Prob): from a given point, draw a line equal to a given line.
+% Figure and proof geometry from jemmybutton byrne-en-latex.tex (CC-BY-SA), wording from 1847 original.
+% Build: lualatex generator_I02.tex  ->  generator_I02.pdf
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.5cm}
+\usepackage[lining]{ebgaramond}
+\usepackage{amssymb}
+\usepackage{byrne}
+\def\mpPre{u := 1cm; textLabels := false;}
+
+\begin{document}
+
+% FIGURE: point A (given), line BC (given), equilateral triangle ABD, circles at D and B.
+\defineNewPicture{%
+    pair A, B, C, D, E, F;%
+    path P[];%
+    numeric r[];%
+    A := (0, 0);%
+    B := (-3/5u, -3/5u);%
+    C := (-2u, -1/3u);%
+    r1 := abs(A-B);%
+    D := (fullcircle scaled 2r1 shifted A) intersectionpoint (fullcircle scaled 2r1 shifted B);%
+    r2 := abs(B-C);%
+    r3 := r1 + r2;%
+    P1 := fullcircle scaled 2r2 shifted B;%
+    P2 := fullcircle scaled 2r3 shifted D;%
+    E := (D -- 10[D, B]) intersectionpoint P1;%
+    F := (D -- 10[D, A]) intersectionpoint P2;%
+    % Layer-1 assertions: AF = BC (the construction goal)
+    if abs(abs(A-F) - abs(B-C)) > 0.01: errmessage "ASSERT: AF != BC"; fi;%
+    % BD = DA (equilateral triangle sides)
+    if abs(abs(B-D) - abs(D-A)) > 0.01: errmessage "ASSERT: BD != DA"; fi;%
+    byLineDefine(A, B, byblack, DASHED_LINE, REGULAR_WIDTH);%
+    byLineDefine(B, C, byblack, SOLID_LINE, REGULAR_WIDTH);%
+    byLineDefine(B, D, byred,   SOLID_LINE, REGULAR_WIDTH);%
+    byLineDefine(D, A, byred,   SOLID_LINE, REGULAR_WIDTH);%
+    byLineDefine(B, E, byyellow,SOLID_LINE, REGULAR_WIDTH);%
+    byLineDefine(A, F, byblue,  SOLID_LINE, REGULAR_WIDTH);%
+    draw byNamedLineSeq(0)(AB,BC);%
+    draw byNamedLineSeq(0)(BE,BD,DA,AF);%
+    draw byCircle.A(D, E, byred,  0, 0,  1/2);%
+    draw byCircle.B(B, C, byblue, 0, 0, -1/2);%
+    draw byLabelsOnPolygon(E, D, A, F)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL, 1);%
+    draw byLabelsOnPolygon(E, B, C)(OMIT_FIRST_LABEL+OMIT_LAST_LABEL, 1);%
+    draw byLabelsOnCircle(C)(B);%
+    draw byLabelsOnCircle(E, F)(A);%
+}
+
+% STATEMENT
+\begin{center}
+\textbf{Book~I.\enspace Prop.\ II. Prob.}
+\end{center}
+
+\vspace{0.3cm}
+\noindent
+\begin{minipage}[t]{0.50\linewidth}
+\itshape From a given point
+(\drawFromCurrentPicture[middle][pointA]{%
+    startGlobalRotation(-lineAngle.DA);%
+    draw byNamedPointLines(A,"AB");%
+    stopGlobalRotation;%
+}),
+to draw a straight line equal to a given straight line (\drawUnitLine{BC}).
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.46\linewidth}
+\centering
+\drawCurrentPicture
+\end{minipage}
+
+\vspace{0.5cm}
+
+% PROOF
+\begin{center}
+Draw \drawUnitLine{AB}~(post.~I), describe%
+\offsetPicture{10pt}{0pt}{%
+\drawFromCurrentPicture[bottom]{%
+    startAutoLabeling;%
+    startTempScale(scaleFactor*3);%
+    startGlobalRotation(180-lineAngle.AB);%
+    draw byNamedLineSeq(0)(AB,BD,DA);%
+    stopGlobalRotation;%
+    stopTempScale;%
+    stopAutoLabeling;%
+}}%
+(pr.~I.1),\\[3pt]
+produce \drawUnitLine{BD}~(post.~II),\\[3pt]
+describe \offsetPicture{10pt}{0pt}{\drawFromCurrentPicture{%
+    draw byNamedLine(BC);%
+    draw byNamedCircle(B);%
+    draw byLabelLineEnd(B, C, 0);%
+    draw byLabelLineEnd(C, B, 0);%
+}} and \offsetPicture{10pt}{0pt}{\drawFromCurrentPicture{%
+    draw byNamedLineSeq(0)(BD, BE);%
+    draw byNamedCircle(A);%
+    draw byLabelLineEnd(D, E, 0);%
+    draw byLabelLineEnd(E, D, 1);%
+}}~(post.~III);\\[3pt]
+produce \drawUnitLine{DA}~(post.~II),\\[3pt]
+then \drawUnitLine{AF} is the line required.\\[8pt]
+For $\drawUnitLine{BE,BD} = \drawUnitLine{DA,AF}$~(def.~15),\\
+and $\drawUnitLine{BD} = \drawUnitLine{DA}$~(const.),\\
+$\therefore \drawUnitLine{BE} = \drawUnitLine{AF}$~(post.~III),\\
+but~(def.~15) $\drawUnitLine{BC} = \drawUnitLine{BE} = \drawUnitLine{AF}$;\\[6pt]
+$\therefore \drawUnitLine{AF}$ drawn from the given point~(\pointA),
+is equal to the given line~\drawUnitLine{BC}.
+\end{center}
+
+\begin{flushright}Q.\ E.\ D.\end{flushright}
+
+\end{document}
