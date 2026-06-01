@@ -79,6 +79,23 @@ Claude Sonnet 4.6.
 
 ## License
 
-Dedicated to the public domain under [**CC0 1.0**](LICENSE). The source material
-(Byrne 1847) is itself public domain; this recreation adds no restrictions — use
-it freely, no attribution required (though credit is always appreciated).
+The author's own contributions — the per-proposition LaTeX **generators** and the
+Python **packaging code** — are dedicated to the public domain under
+[**CC0 1.0**](LICENSE), and come **with no warranty of any kind**. The underlying
+text and geometry are from Byrne's 1847 *Elements*, which is itself public domain.
+
+The coloured figures and inline symbols are **rendered by the `byrne` package
+(GPL-3.0) by Sergey Slyusarev (jemmybutton)**, which is **not included or
+redistributed** here — you install it yourself from CTAN/TeX Live.
+
+## Notice & good-faith policy
+
+This is a **personal, non-commercial project, created purely for learning**. It is
+shared freely and in good faith. The author **does not seek, accept, or pay any
+money** in connection with it, and claims no ownership over the public-domain
+source material or over the third-party tools it relies on.
+
+**If you are a rights holder — or anyone with a genuine concern about any part of
+this repository — please open a GitHub issue. The material in question will be
+amended or removed promptly and without argument.** Nothing here is intended to
+infringe anyone's rights or to compete with the works it gratefully builds upon.
